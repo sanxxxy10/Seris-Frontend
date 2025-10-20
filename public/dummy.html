@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seris - Digital Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#F3F4F6",
+                        "text-light": "#6B7280",
+                        "text-dark": "#1F2937"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" },
+                    animation: {
+                        'scroll-horizontal': 'scroll-horizontal 40s linear infinite',
+                    },
+                    keyframes: {
+                        'scroll-horizontal': {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<div class="flex flex-1 justify-center">
+<div class="layout-content-container flex flex-col w-full">
+<header class="hidden md:flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 px-10 py-4">
+<div class="flex items-center gap-4 text-text-dark">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_319)">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"></path>
+</g>
+<defs><clipPath id="clip0_6_319"><rect fill="white" height="48" width="48"></rect></clipPath></defs>
+</svg>
+</div>
+<h2 class="text-text-dark text-xl font-bold leading-tight tracking-[-0.015em]">Seris</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="flex items-center gap-9">
+<a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="#">Home</a>
+<a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="#">Services</a>
+<a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="#">Your Projects</a>
+<a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="#">Clients</a>
+</div>
+<div class="flex gap-4 items-center">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-base font-semibold leading-normal tracking-[-0.01em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Login</span>
+</button>
+<div class="relative group">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCN0BetVoMNqeJcz6eMP_U2Zy3J6BCaTSjziugWxO_sV1PXNcVbcMafbHDdzP0wOMyyRELkaCfMcS6yTk-THgy2zwD2lDfzhXeQOi6Vjlhy77oqGwLzxhKYu0UJpjdlBCgj-OwsHdMP-nngqEXTT_BX8dxh4vGumvWn6vrFilF0Y7sDJjWvwy2LeQN1N-hWcEUcoeD9oVY-oGpV2uvOqmhl6KqRpTOwwOwyX4W23FsIgQ31JsFNpSOdl1nxH7Y9M1Jn2PMN3-hgvXWr");'></div>
+<div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-gray-100">
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">Account</a>
+<a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="#">Logout</a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<header class="md:hidden flex items-center justify-between p-4 border-b border-solid border-gray-200">
+<div class="flex items-center gap-3">
+<div class="size-7 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip1_6_319)">
+<path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z"></path>
+</g>
+<defs><clipPath id="clip1_6_319"><rect fill="white" height="48" width="48"></rect></clipPath></defs>
+</svg>
+</div>
+<h2 class="text-text-dark text-xl font-bold">Seris</h2>
+</div>
+<a class="text-text-light text-base font-medium" href="#">Clients</a>
+</header>
+<main class="flex-1 pb-20 md:pb-0">
+<div class="relative bg-background-light overflow-hidden" id="hero-section">
+<div class="absolute inset-0 bg-gray-50 bg-cover bg-center" id="hero-background" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBKF2UUuKEyLBarg9NCDY5-0E3LUwwdNCI2Ef1MTSjIDcUn6_CtNY3Mp9YU5HI0ZdbBSNtauIForXLlD5pbcG0zENbJN6bvGUQvumRprXk2fYIHGuzcS7VhFFoV4vqyPeASOEKvCMDlMTaA8P5rZJB-XjuVno8LZECvGqDJy6KcpjrmxUexgezlyqV6evSZ87C3p6GJ5CbcMN_OXH8A85pvbLhMONS3iFjFR2neVeIOrg1oTiSsbW7QSyIPZNhdGqR8t8ZDCWrRdTjb'); background-attachment: fixed; background-size: cover; background-position: center; display: none;"></div>
+<div class="absolute inset-0 bg-gray-50" id="hero-background-fallback"></div>
+<div class="absolute inset-0 z-10 pointer-events-none">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-full h-full relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] md:w-[60%] md:h-[60%] bg-blue-200 rounded-full opacity-10 animate-pulse-slow"></div>
+<div class="absolute inset-0 w-full h-full border-4 border-dashed border-blue-500/30 rounded-full animate-spin-slow"></div>
+<div class="absolute inset-x-0 mx-auto top-[20%] w-10 h-10 bg-blue-400/30 rounded-full animate-float-up"></div>
+<div class="absolute inset-y-0 my-auto left-[15%] w-8 h-8 bg-primary/30 rounded-xl animate-float-up-delay"></div>
+<div class="absolute inset-y-0 my-auto right-[15%] w-12 h-12 bg-blue-300/30 rounded-full animate-float-up"></div>
+<div class="absolute inset-x-0 mx-auto bottom-[20%] w-6 h-6 bg-blue-500/30 rotate-45 animate-float-up-delay"></div>
+<div class="absolute top-1/3 left-[10%] w-5 h-5 bg-blue-100/40 rounded-full animate-pulse-fast"></div>
+<div class="absolute bottom-1/3 right-[10%] w-7 h-7 bg-blue-200/40 rounded-full animate-pulse-medium"></div>
+</div>
+</div>
+</div>
+<div class="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 lg:py-40">
+<div class="text-center">
+<p class="text-primary font-semibold tracking-wide uppercase text-sm md:text-base">🚀 Fast, Reliable, and Tailored Just for You</p>
+<h1 class="mt-4 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-text-dark leading-tight tracking-tighter">Transforming Ideas into Stunning Digital Experiences</h1>
+<p class="mt-6 text-lg md:text-xl text-text-light max-w-3xl mx-auto">At Seris, we craft innovative web solutions and custom software that empower your business to grow. From responsive websites to robust applications, your digital vision is our mission.</p>
+<div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-8 bg-primary text-white text-lg font-semibold leading-normal tracking-[-0.01em] hover:bg-primary/90 transition-all duration-300 ease-in-out transform hover:scale-105">
+<span class="truncate">Explore Our Services</span>
+</button>
+</div>
+</div>
+</div>
+<style>
+                    @media (min-width: 1024px) {
+                        #hero-background {
+                            display: block;
+                        }
+                        #hero-background-fallback {
+                            display: none;
+                        }
+                    }
+                    @keyframes pulse-slow {
+                        0%, 100% { transform: scale(1); opacity: 0.1; }
+                        50% { transform: scale(1.05); opacity: 0.05; }
+                    }
+                    .animate-pulse-slow { animation: pulse-slow 10s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+                    @keyframes pulse-medium {
+                        0%, 100% { opacity: 0.2; }
+                        50% { opacity: 0.4; }
+                    }
+                    .animate-pulse-medium { animation: pulse-medium 8s cubic-bezier(0.4, 0, 0.6, 1) infinite; animation-delay: 2s; }
+                    @keyframes pulse-fast {
+                        0%, 100% { transform: scale(1); opacity: 0.3; }
+                        50% { transform: scale(1.1); opacity: 0.5; }
+                    }
+                    .animate-pulse-fast { animation: pulse-fast 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; animation-delay: 1s; }
+                    @keyframes spin-slow {
+                        from { transform: rotate(0deg); }
+                        to { transform: rotate(360deg); }
+                    }
+                    .animate-spin-slow { animation: spin-slow 45s linear infinite; }
+                    @keyframes float-up {
+                        0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+                        50% { opacity: 0.5; }
+                        100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+                    }
+                    .animate-float-up { animation: float-up 15s ease-in-out infinite; }
+                    .animate-float-up-delay { animation: float-up 15s ease-in-out infinite; animation-delay: 5s; }
+                </style>
+</div>
+<section class="px-4 md:px-10 lg:px-20 py-16">
+<h2 class="text-text-dark text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-3 text-center">Our Expertise – Tailored to Your Needs</h2>
+<p class="text-text-light text-lg font-normal leading-normal mb-12 text-center max-w-3xl mx-auto">We deliver end-to-end solutions to help your business thrive online. Each project is built with precision, creativity, and scalability in mind.</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+<div class="flex flex-col gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-2" data-alt="A modern laptop displaying code on a screen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA19n-dvxKmvDG_2gmPjNV6N3SvUaR_3zXrBx0UhIhfAV1_ibK4M3ORcZ1SBmlzYWc1NcI48c9qCHyCr8N3lbCvJSY3i2xMcsYD_-RX7fER0lW-I10oUV-g7RCTNIuvaXG_klnrCj7sS03Pj904v64AcalaGFlRHjilppf2MK95yEi8803DWtD_Q5CjICnvtnhm7yzsN1g1RBKF_VmAxamEsupPX9Smb_ibTYqbDVCVsQN9i-tbqg-R4z8Vswo8yd10I8bKQ3C-Ps3G");'></div>
+<div>
+<p class="text-text-dark text-xl font-semibold leading-normal">Web Development</p>
+<p class="text-text-light text-base font-normal leading-normal">Building responsive and high-performing websites.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-2" data-alt="Abstract visualization of software architecture" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAFlVHAZZC1_ywrZ4j8JTZnwLKPkCY-2AE56vSQ95RHg0wkfXy-yi0qWxAJfjBh4-AiexNxgKZZCF2iMmzP06l6oyedHy4RzRW9XhO1nrtkj6cjk9zZW0I5nDz7wl9gWZ6-ABBygnJRXUpQ12gYuO6wUg_UK27rHzC0lwuuS-ps9XG30iYMV0F4EOB6j03MiUymnhV99tv6D5spI7s4CyiQ_lRG59UimwCwPPXMRsZEUOdT8q_TiFA3A48TqjZTltb6BL9UZYrN_RIr");'></div>
+<div>
+<p class="text-text-dark text-xl font-semibold leading-normal">Custom Software</p>
+<p class="text-text-light text-base font-normal leading-normal">Developing bespoke software tailored to your business.</p>
+</div>
+</div>
+<div class="flex flex-col gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow">
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-2" data-alt="Online shopping cart interface on a tablet" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADl7FiAr32ljE4LHISOS1K-Ul-J1y0PxLwB9DtG9hiogcyrdAH_tMvBuVOy0NEudWSt-0q5Yfl3ANqszKF0jRIaRsQT9Nnv6acCDvm9wfhuGyOpb6pLTUt5fiTG9fd4Dsjq_2p-rDXg7MfqfaDXyeXFh3nyoVoFTHRxEm7wq2C1F3AXht5ZlLjZv6Y0KZ6mJ8a3I-cK_0F9gzZIcl1gDJWGCiszDxYyOiaMf4b4Zza0eElYrklCi12i6j1DFm8XG9QR1s113NR-B2I");'></div>
+<div>
+<p class="text-text-dark text-xl font-semibold leading-normal">E-Commerce Solutions</p>
+<p class="text-text-light text-base font-normal leading-normal">Creating seamless online shopping experiences.</p>
+</div>
+</div>
+</div>
+<div class="text-center mt-12">
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-6 bg-primary/10 text-primary text-base font-semibold leading-normal tracking-[-0.01em] mx-auto hover:bg-primary/20 transition-colors">
+<span class="truncate">View All Services</span>
+</button>
+</div>
+</section>
+<section class="px-4 md:px-10 lg:px-20 py-16 bg-background-dark">
+<h2 class="text-text-dark text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-12 text-center">Why Seris is the Perfect Partner for Your Digital Journey</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-4xl mt-1">workspace_premium</span>
+<div>
+<h3 class="text-text-dark text-lg font-semibold">Expertise &amp; Experience</h3>
+<p class="text-text-light text-base mt-1">Decades of combined experience in delivering high-quality digital products.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-4xl mt-1">construction</span>
+<div>
+<h3 class="text-text-dark text-lg font-semibold">Tailored Solutions</h3>
+<p class="text-text-light text-base mt-1">We don't do one-size-fits-all. Every solution is customized to your unique needs.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-4xl mt-1">lightbulb</span>
+<div>
+<h3 class="text-text-dark text-lg font-semibold">Innovative Approach</h3>
+<p class="text-text-light text-base mt-1">We stay ahead of the curve, using the latest technologies and best practices.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-4xl mt-1">support_agent</span>
+<div>
+<h3 class="text-text-dark text-lg font-semibold">Reliable Support</h3>
+<p class="text-text-light text-base mt-1">Our team is here to support you long after your project goes live.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary text-4xl mt-1">timer</span>
+<div>
+<h3 class="text-text-dark text-lg font-semibold">Timely Delivery</h3>
+<p class="text-text-light text-base mt-1">We respect your time and deadlines, ensuring projects are completed on schedule.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-16 overflow-hidden">
+<h2 class="text-text-dark text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-3 text-center">What Our Clients Are Saying</h2>
+<p class="text-text-light text-lg font-normal leading-normal mb-12 text-center max-w-3xl mx-auto px-4">We take pride in creating solutions that our clients love. Here’s what they have to say about working with Seris.</p>
+<div class="relative w-full overflow-hidden group">
+<div class="flex animate-scroll-horizontal group-hover:[animation-play-state:paused]">
+<div class="flex-shrink-0 w-[90vw] sm:w-[45vw] lg:w-[30vw] p-4">
+<div class="bg-white rounded-xl p-6 h-full border border-gray-200 shadow-sm">
+<p class="text-text-light italic">"Seris transformed our online presence. Their attention to detail and innovative approach were outstanding."</p>
+<div class="flex items-center mt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Client A avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuI-zi9VAwjsJYDa5nX0gkS3zmpztEeT2-XIL7rCL_t8IqHBGZBZIMa-zjqDvI8yuNa6ZJ4NnRI0R5Zbu96D1h1dnhkiF3dgbRzI6xNi0zeN9F65q-VTsKvMCWsdfSl1twvR_3BBdS66wwiEPI8Ah0WWWzR3YZrQP9r_gwnzE46f7qwGvUzV5ZnfWpMF_RUVsrpKmVxUCV7w56jBrt5NKnnfrw_0wQ8b92m_nkk_dnXOenGA07x7_L6o77HG8lIdmq5_7pHsN4FMMV");'></div>
+<div class="ml-4">
+<p class="font-bold text-text-dark">Client A</p>
+<p class="text-sm text-text-light">CEO, TechCorp</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-[90vw] sm:w-[45vw] lg:w-[30vw] p-4">
+<div class="bg-white rounded-xl p-6 h-full border border-gray-200 shadow-sm">
+<p class="text-text-light italic">"The custom software they built for us has streamlined our operations and saved us countless hours."</p>
+<div class="flex items-center mt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Client B avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdbkHIskLAnEsP9XgufO7fhJ-AntiaDvkLHVifwovrE4jkvlIyqMYYRg8U88sTaJde4ql4dFuAsC5KMugqmJ93vusfXGj_GuL7RH3CXPJDz_pBgN3Tx6EeXxEKV7e6_VlE4DjVTqHGBHLXCfVaHxDswiRKxAGmQdZ4v48sfaXfp41JxqkNwhZpkel0sPTuXW5E5sZLsd-pg3N0i03sh5Cz5sBa6WcCq5EXkegf9-DcEsCIcP-dIxNMvKtAFRqDWkTU5Ap1ldxnabH6");'></div>
+<div class="ml-4">
+<p class="font-bold text-text-dark">Client B</p>
+<p class="text-sm text-text-light">Operations Manager, Innovate Inc.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-[90vw] sm:w-[45vw] lg:w-[30vw] p-4">
+<div class="bg-white rounded-xl p-6 h-full border border-gray-200 shadow-sm">
+<p class="text-text-light italic">"A true partner. Seris listened to our needs and delivered a solution that exceeded our expectations."</p>
+<div class="flex items-center mt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Client C avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtE2eNJDITR0Rs2ZUQ5R3dRRdb6w2xcNWjMVOGg-AlnGJznNbln_AGbZ8qXFW-ymBduZkV0W77cEJjvh8FnoHQZ3AVNyKppo-cVPM3HSXo-MDSQAzkhgNjgB8apdfWthSDrqZmWPGVGhpCqFWM9mGz6r92KxAZAMVdmhIl6ffGYHui7s0IOAWQTdP2DxkuTXkKIJ8NJTLKhLUhR2zuzMvKNHvAwYiA2VZxPjAQ0rrBtvHragyehpX5NY63RizqNc195E1AHMoFcRdr");'></div>
+<div class="ml-4">
+<p class="font-bold text-text-dark">Client C</p>
+<p class="text-sm text-text-light">Marketing Head, Global Solutions</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-[90vw] sm:w-[45vw] lg:w-[30vw] p-4">
+<div class="bg-white rounded-xl p-6 h-full border border-gray-200 shadow-sm">
+<p class="text-text-light italic">"Working with Seris was a game-changer for our e-commerce platform. Sales are up 40%!"</p>
+<div class="flex items-center mt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Client D avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuI-zi9VAwjsJYDa5nX0gkS3zmpztEeT2-XIL7rCL_t8IqHBGZBZIMa-zjqDvI8yuNa6ZJ4NnRI0R5Zbu96D1h1dnhkiF3dgbRzI6xNi0zeN9F65q-VTsKvMCWsdfSl1twvR_3BBdS66wwiEPI8Ah0WWWzR3YZrQP9r_gwnzE46f7qwGvUzV5ZnfWpMF_RUVsrpKmVxUCV7w56jBrt5NKnnfrw_0wQ8b92m_nkk_dnXOenGA07x7_L6o77HG8lIdmq5_7pHsN4FMMV");'></div>
+<div class="ml-4">
+<p class="font-bold text-text-dark">Client D</p>
+<p class="text-sm text-text-light">Founder, StyleHub</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-[90vw] sm:w-[45vw] lg:w-[30vw] p-4">
+<div class="bg-white rounded-xl p-6 h-full border border-gray-200 shadow-sm">
+<p class="text-text-light italic">"Seris transformed our online presence. Their attention to detail and innovative approach were outstanding."</p>
+<div class="flex items-center mt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Client A avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuI-zi9VAwjsJYDa5nX0gkS3zmpztEeT2-XIL7rCL_t8IqHBGZBZIMa-zjqDvI8yuNa6ZJ4NnRI0R5Zbu96D1h1dnhkiF3dgbRzI6xNi0zeN9F65q-VTsKvMCWsdfSl1twvR_3BBdS66wwiEPI8Ah0WWWzR3YZrQP9r_gwnzE46f7qwGvUzV5ZnfWpMF_RUVsrpKmVxUCV7w56jBrt5NKnnfrw_0wQ8b92m_nkk_dnXOenGA07x7_L6o77HG8lIdmq5_7pHsN4FMMV");'></div>
+<div class="ml-4">
+<p class="font-bold text-text-dark">Client A</p>
+<p class="text-sm text-text-light">CEO, TechCorp</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-[90vw] sm:w-[45vw] lg:w-[30vw] p-4">
+<div class="bg-white rounded-xl p-6 h-full border border-gray-200 shadow-sm">
+<p class="text-text-light italic">"The custom software they built for us has streamlined our operations and saved us countless hours."</p>
+<div class="flex items-center mt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Client B avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBdbkHIskLAnEsP9XgufO7fhJ-AntiaDvkLHVifwovrE4jkvlIyqMYYRg8U88sTaJde4ql4dFuAsC5KMugqmJ93vusfXGj_GuL7RH3CXPJDz_pBgN3Tx6EeXxEKV7e6_VlE4DjVTqHGBHLXCfVaHxDswiRKxAGmQdZ4v48sfaXfp41JxqkNwhZpkel0sPTuXW5E5sZLsd-pg3N0i03sh5Cz5sBa6WcCq5EXkegf9-DcEsCIcP-dIxNMvKtAFRqDWkTU5Ap1ldxnabH6");'></div>
+<div class="ml-4">
+<p class="font-bold text-text-dark">Client B</p>
+<p class="text-sm text-text-light">Operations Manager, Innovate Inc.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-[90vw] sm:w-[45vw] lg:w-[30vw] p-4">
+<div class="bg-white rounded-xl p-6 h-full border border-gray-200 shadow-sm">
+<p class="text-text-light italic">"A true partner. Seris listened to our needs and delivered a solution that exceeded our expectations."</p>
+<div class="flex items-center mt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Client C avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBtE2eNJDITR0Rs2ZUQ5R3dRRdb6w2xcNWjMVOGg-AlnGJznNbln_AGbZ8qXFW-ymBduZkV0W77cEJjvh8FnoHQZ3AVNyKppo-cVPM3HSXo-MDSQAzkhgNjgB8apdfWthSDrqZmWPGVGhpCqFWM9mGz6r92KxAZAMVdmhIl6ffGYHui7s0IOAWQTdP2DxkuTXkKIJ8NJTLKhLUhR2zuzMvKNHvAwYiA2VZxPjAQ0rrBtvHragyehpX5NY63RizqNc195E1AHMoFcRdr");'></div>
+<div class="ml-4">
+<p class="font-bold text-text-dark">Client C</p>
+<p class="text-sm text-text-light">Marketing Head, Global Solutions</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-shrink-0 w-[90vw] sm:w-[45vw] lg:w-[30vw] p-4">
+<div class="bg-white rounded-xl p-6 h-full border border-gray-200 shadow-sm">
+<p class="text-text-light italic">"Working with Seris was a game-changer for our e-commerce platform. Sales are up 40%!"</p>
+<div class="flex items-center mt-4">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12" data-alt="Client D avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAuI-zi9VAwjsJYDa5nX0gkS3zmpztEeT2-XIL7rCL_t8IqHBGZBZIMa-zjqDvI8yuNa6ZJ4NnRI0R5Zbu96D1h1dnhkiF3dgbRzI6xNi0zeN9F65q-VTsKvMCWsdfSl1twvR_3BBdS66wwiEPI8Ah0WWWzR3YZrQP9r_gwnzE46f7qwGvUzV5ZnfWpMF_RUVsrpKmVxUCV7w56jBrt5NKnnfrw_0wQ8b92m_nkk_dnXOenGA07x7_L6o77HG8lIdmq5_7pHsN4FMMV");'></div>
+<div class="ml-4">
+<p class="font-bold text-text-dark">Client D</p>
+<p class="text-sm text-text-light">Founder, StyleHub</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="px-4 md:px-10 lg:px-20 py-16 bg-background-dark">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+<div class="w-full aspect-square max-w-md mx-auto">
+<div class="w-full h-full bg-center bg-no-repeat bg-cover rounded-xl" data-alt="Professional headshot of Sanjay Ram, founder of Seris" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAKhMQ7XhRNTQqEHh-OqxLjfj70FjkbhTsPA1Xo9v6UFbZAz89Me6vm5-lotmWLcZSZ2dLkyH3FDbkIP1Rd_qN3W8J97RJCbM2tL5g_UR_hKCnM-wSmKFo4i0whYUyKMk-VlvyktRC4lZu1DnUqG4KN-_eat58djtr9xnnWBaOi6V21IGj7nOc0QuSJ11gvzbsjHpUQt7U286mrUGF2YWd1dXsJ_fhY06PE4urGEAb2oS4Xys2wPkd0PVHdsjUvfMfvt0uPjLIV1ooo");'></div>
+</div>
+<div>
+<h2 class="text-text-dark text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-4">Meet Sanjay Ram – The Mind Behind Seris</h2>
+<p class="text-text-light mb-6 text-lg">Sanjay Ram is a passionate full-stack developer and the founder of Seris. Based in Chennai, he specializes in creating beautiful, functional websites and powerful custom software solutions that drive business growth.</p>
+<ul class="space-y-4 text-text-dark">
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">check_circle</span>Full-stack web development expertise</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">check_circle</span>Custom software solutions</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">check_circle</span>Client-focused approach</li>
+<li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary">check_circle</span>Passion for technology and innovation</li>
+</ul>
+<button class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-6 mt-8 bg-primary text-white text-base font-semibold leading-normal tracking-[-0.01em] hover:bg-primary/90 transition-colors">
+<span class="truncate">Learn More About Me</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white text-text-light border-t border-gray-200">
+<div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Quick Links</h3>
+<ul class="mt-4 space-y-3">
+<li><a class="text-base hover:text-primary" href="#">Home</a></li>
+<li><a class="text-base hover:text-primary" href="#">Services</a></li>
+<li><a class="text-base hover:text-primary" href="#">About</a></li>
+<li><a class="text-base hover:text-primary" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Social</h3>
+<ul class="mt-4 space-y-3">
+<li><a class="text-base hover:text-primary" href="#">LinkedIn</a></li>
+<li><a class="text-base hover:text-primary" href="#">GitHub</a></li>
+<li><a class="text-base hover:text-primary" href="#">Instagram</a></li>
+</ul>
+</div>
+<div class="col-span-2">
+<h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Seris</h3>
+<p class="mt-4 text-base">Your Partner for Innovative Digital Solutions</p>
+</div>
+</div>
+<div class="mt-8 border-t border-gray-200 pt-8 text-center text-sm">
+<p>© 2024 Seris. All rights reserved.</p>
+</div>
+</div>
+</footer>
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around p-2 z-10 shadow-[0_-1px_3px_rgba(0,0,0,0.1)]">
+<a class="flex flex-col items-center text-primary w-full py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center text-gray-500 hover:text-primary w-full py-1" href="#">
+<span class="material-symbols-outlined">design_services</span>
+<span class="text-xs font-medium">Services</span>
+</a>
+<a class="flex flex-col items-center text-gray-500 hover:text-primary w-full py-1" href="#">
+<span class="material-symbols-outlined">folder_managed</span>
+<span class="text-xs font-medium">Your Project</span>
+</a>
+<a class="flex flex-col items-center text-gray-500 hover:text-primary w-full py-1" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="text-xs font-medium">Account</span>
+</a>
+</nav>
+</div>
+</div>
+</div>
+</div>
+</body></html>

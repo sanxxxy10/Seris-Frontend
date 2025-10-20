@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login & Sign Up - Seris</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<script>
+tailwind.config = {
+    darkMode: "class",
+    theme: {
+        extend: {
+            fontFamily: {
+                display: ["Inter", "sans-serif"],
+            }
+        },
+    },
+};
+</script>
+<style>
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+body {
+    font-family: "Inter", sans-serif;
+}
+.form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+}
+.bg-gradient-custom {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+.blob1 {
+    background-color: rgba(168, 85, 247, 0.2);
+    animation: blob-move 15s infinite cubic-bezier(0.6, 0.2, 0.4, 0.8);
+}
+.blob2 {
+    background-color: rgba(99, 102, 241, 0.2);
+    animation: blob-move 12s infinite cubic-bezier(0.6, 0.2, 0.4, 0.8) 3s;
+}
+.blob3 {
+    background-color: rgba(59, 130, 246, 0.2);
+    animation: blob-move 18s infinite cubic-bezier(0.6, 0.2, 0.4, 0.8) 6s;
+}
+@keyframes blob-move {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(20px, -30px) scale(1.1); }
+    50% { transform: translate(-10px, 40px) scale(0.9); }
+    75% { transform: translate(30px, 10px) scale(1.2); }
+}
+.toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+.toast {
+    background-color: #333;
+    color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transform: translateY(20px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.toast.success { background-color: #4CAF50; }
+.toast.error { background-color: #f44336; }
+</style>
+</head>
+<body class="bg-gradient-custom">
+<div class="relative flex min-h-screen w-full items-center justify-center p-4 overflow-hidden">
+<!-- Animated Background Blobs -->
+<div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+    <div class="absolute -top-20 -left-20 w-96 h-96 rounded-full blob1"></div>
+    <div class="absolute -bottom-20 -right-20 w-96 h-96 rounded-full blob2"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full blob3"></div>
+</div>
+
+<div class="relative z-10 w-full max-w-md" x-data="{ isLogin: true, signupStep: 1, forgotPassword: false }">
+<!-- Glassmorphism Card -->
+<div class="bg-white/70 backdrop-blur-xl rounded-2xl shadow-2xl p-8 sm:p-10">
+    <!-- Logo -->
+    <div class="flex justify-center mb-6">
+        <a href="/SerisWebs" aria-label="Home">
+            <img alt="Seris Logo" class="h-12 w-auto" src="assets/images/seris.png"/>
+        </a>
+    </div>
+
+    <!-- Login Form -->
+    <div x-show="isLogin && !forgotPassword">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Welcome back</h1>
+            <p class="text-gray-500 mt-2">Login to your account to continue.</p>
+        </div>
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="login-email">Email</label>
+                <input id="login-email" placeholder="Email address" type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1" for="login-password">Password</label>
+                <input id="login-password" placeholder="Password" type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/>
+            </div>
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <input type="checkbox" id="remember-me" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"/>
+                    <label for="remember-me" class="ml-2 block text-sm text-gray-700">Remember me</label>
+                </div>
+                <button @click.prevent="forgotPassword = true" class="text-sm font-medium text-indigo-600 hover:text-indigo-500" type="button">Forgot password?</button>
+            </div>
+            <button type="submit" class="w-full py-3 mt-4 text-white bg-indigo-600 rounded-lg font-semibold hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200">Login</button>
+            <p class="text-center text-sm text-gray-600 mt-4">
+                Don't have an account?
+                <button @click.prevent="isLogin = false; signupStep = 1" class="font-semibold text-indigo-600 hover:text-indigo-500" type="button">Sign up now</button>
+            </p>
+            <div id="loginError" class="text-red-500 text-sm mt-2 text-center font-medium"></div>
+        </form>
+    </div>
+
+    <!-- Forgot Password Form -->
+    <div x-show="forgotPassword" style="display: none">
+        <div class="text-center mb-8"><h1 class="text-3xl font-bold text-gray-800">Forgot Password?</h1><p class="text-gray-500 mt-2">Enter your email and we'll send reset instructions.</p></div>
+        <form id="forgotPasswordForm" class="space-y-4">
+            <div><label class="block text-sm font-medium text-gray-700 mb-1" for="forgot-password-email">Email</label><input id="forgot-password-email" placeholder="Email address" type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+            <button type="submit" class="w-full py-3 mt-4 text-white bg-indigo-600 rounded-lg font-semibold hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200">Send Instructions</button>
+            <div class="mt-6 text-center"><button @click.prevent="forgotPassword = false" class="text-indigo-600 hover:underline text-sm font-medium" type="button">Back to Login</button></div>
+            <div id="forgotPasswordError" class="text-red-500 text-sm mt-2 text-center font-medium"></div>
+        </form>
+    </div>
+    
+    <!-- Signup Forms Container -->
+    <div x-show="!isLogin" style="display: none">
+        <div class="text-center mb-6"><h1 class="text-3xl font-bold text-gray-800">Create an account</h1><p class="text-gray-500 mt-2">Join us today and get started.</p></div>
+        
+        <!-- Progress Bar -->
+        <div class="mb-6">
+            <div class="flex items-center justify-between mb-2">
+                <p class="text-sm font-medium text-gray-600" x-show="signupStep === 1">Step 1 of 2: Basic Information</p>
+                <p class="text-sm font-medium text-gray-600" x-show="signupStep === 2" style="display: none;">Step 2 of 2: Additional Details</p>
+            </div>
+            <div class="h-2 w-full rounded-full bg-gray-200">
+                <div :style="`width: ${signupStep === 1 ? '50%' : '100%'}`" class="h-2 rounded-full bg-indigo-600 transition-all duration-300"></div>
+            </div>
+        </div>
+        
+        <!-- Signup Step 1: Basic Info -->
+        <form id="signupForm" class="space-y-4" x-show="signupStep === 1" @submit.prevent="signupStep = 2">
+            <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-name">Full Name</label><input id="signup-name" placeholder="Full Name" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-email">Email</label><input id="signup-email" placeholder="Email Address" type="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+            <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-password">Password</label><input id="signup-password" placeholder="Password" type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+            <button type="submit" class="w-full py-3 mt-4 text-white bg-indigo-600 rounded-lg font-semibold hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200">Next</button>
+            <p class="text-center text-sm text-gray-600 mt-4">Already have an account? <button @click.prevent="isLogin = true; forgotPassword = false" class="font-semibold text-indigo-600 hover:text-indigo-500" type="button">Login</button></p>
+        </form>
+        
+        <!-- Signup Step 2: Additional Details -->
+        <form id="signupForm2" class="space-y-4" x-show="signupStep === 2" style="display: none">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-companyName">Company Name</label><input id="signup-companyName" placeholder="Your Company LLC" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-mobileNo">Mobile No.</label><input id="signup-mobileNo" placeholder="e.g., +1 555-1234" type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-companyField">Industry</label><input id="signup-companyField" placeholder="e.g., Technology" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-region">Region</label><input id="signup-region" placeholder="e.g., North America" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-state">State / Province</label><input id="signup-state" placeholder="e.g., California" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+                <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-city">City</label><input id="signup-city" placeholder="e.g., San Francisco" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+            </div>
+             <div><label class="block text-sm font-medium text-gray-700 mb-1" for="signup-pinCode">ZIP / Pin Code</label><input id="signup-pinCode" placeholder="e.g., 94103" type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"/></div>
+            
+             <div id="signupError" class="text-red-500 text-sm pt-2 text-center font-medium"></div>
+
+            <div class="flex items-center gap-4 pt-2">
+                <button @click.prevent="signupStep = 1" class="w-full py-3 text-gray-700 bg-gray-200 rounded-lg font-semibold hover:bg-gray-300 transition-colors duration-200" type="button">Back</button>
+                <button type="submit" class="w-full py-3 text-white bg-indigo-600 rounded-lg font-semibold hover:bg-indigo-700 active:bg-indigo-800 transition-colors duration-200">Create Account</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+
+<script>
+// Your backend API URL
+const API_BASE = "https://seris-backend.onrender.com";
+
+// ===== Login Logic =====
+document.getElementById("loginForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+    const errorDiv = document.getElementById("loginError");
+    errorDiv.textContent = "";
+
+    try {
+        const res = await fetch(`${API_BASE}/auth/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        
+        if (!res.ok) throw new Error(data.error || "Login failed. Please check your credentials.");
+        if (!data.token || !data.user) throw new Error("Login failed: Invalid response from server.");
+
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        
+        showToast("Login successful! Redirecting...", "success");
+        setTimeout(() => { window.location.href = "/SerisWebs"; }, 1500);
+
+    } catch (err) {
+        errorDiv.textContent = err.message;
+        showToast(err.message, "error");
+    }
+});
+
+// ===== Signup Logic =====
+document.getElementById("signupForm2").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const errorDiv = document.getElementById("signupError");
+    errorDiv.textContent = "";
+
+    // --- UPDATED: Get values from ALL form fields ---
+    const signupData = {
+        name: document.getElementById("signup-name").value,
+        email: document.getElementById("signup-email").value,
+        password: document.getElementById("signup-password").value,
+        companyName: document.getElementById("signup-companyName").value,
+        mobileNo: document.getElementById("signup-mobileNo").value,
+        companyField: document.getElementById("signup-companyField").value,
+        region: document.getElementById("signup-region").value,
+        state: document.getElementById("signup-state").value,
+        city: document.getElementById("signup-city").value,
+        pinCode: document.getElementById("signup-pinCode").value,
+    };
+    
+    try {
+        const res = await fetch(`${API_BASE}/auth/signup`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            // --- UPDATED: Send the complete data object ---
+            body: JSON.stringify(signupData)
+        });
+        const data = await res.json();
+        
+        if (!res.ok) throw new Error(data.error || "Signup failed. Please try again.");
+        if (!data.token || !data.user) throw new Error("Signup failed: Invalid response from server.");
+
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        showToast("Signup successful! Welcome.", "success");
+        setTimeout(() => { window.location.href = "/SerisWebs"; }, 1500);
+
+    } catch (err) {
+        errorDiv.textContent = err.message;
+        showToast(err.message, "error");
+    }
+});
+
+// ===== Forgot Password Logic =====
+document.getElementById("forgotPasswordForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const email = document.getElementById("forgot-password-email").value;
+    const errorDiv = document.getElementById("forgotPasswordError");
+    errorDiv.textContent = "";
+
+    try {
+        const res = await fetch(`${API_BASE}/auth/forgot-password`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Failed to send reset instructions");
+        showToast("Password reset instructions sent to your email!", "success");
+    } catch (err) {
+        errorDiv.textContent = err.message;
+        showToast(err.message, "error");
+    }
+});
+
+// ===== Toast Notification Function =====
+function showToast(message, type = 'success') {
+    let toastContainer = document.querySelector(".toast-container");
+    if (!toastContainer) {
+        toastContainer = document.createElement("div");
+        toastContainer.className = "toast-container";
+        document.body.appendChild(toastContainer);
+    }
+    const toast = document.createElement("div");
+    toast.className = `toast ${type}`;
+    toast.textContent = message;
+    toastContainer.appendChild(toast);
+    setTimeout(() => { toast.classList.add("show"); }, 10);
+    setTimeout(() => {
+        toast.classList.remove("show");
+        toast.addEventListener('transitionend', () => toast.remove());
+    }, 3000);
+}
+</script>
+
+<script defer src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
+</body>
+</html>

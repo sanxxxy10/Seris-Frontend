@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Our Services - Seris</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#F3F4F6",
+                        "text-light": "#6B7280",
+                        "text-dark": "#1F2937"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light font-display">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="flex flex-1 justify-center">
+                <div class="layout-content-container flex flex-col w-full">
+                    <!-- ======================= -->
+                    <!--    HEADER SECTION       -->
+                    <!-- ======================= -->
+                    <header class="hidden md:flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 px-10 py-4">
+  
+                        <!-- Logo + Text on the left -->
+                        <div class="flex items-center gap-4 text-text-dark">
+                            <img src="assets/images/seris.png" 
+                                 alt="Seris Logo" 
+                                 style="width:48px; height:48px; object-fit:contain;" />
+                            <h2 class="text-text-dark text-xl font-bold leading-tight tracking-[-0.015em]">Seris</h2>
+                        </div>
+
+                        <!-- Right navigation + login -->
+                        <div class="flex flex-1 justify-end gap-8">
+                            <!-- Navigation Links -->
+                            <div class="flex items-center gap-9">
+                                <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/SerisWebs">Home</a>
+                                <a class="text-primary text-base font-medium leading-normal" href="/buildyoursite">Services</a>
+                                <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/yourprojects">Your Projects</a>
+                                <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/serisclients">Clients</a>
+                            </div>
+
+                            <!-- Login / Profile -->
+                            <div class="flex gap-4 items-center">
+                                <!-- Login Button -->
+                                <div id="login-button-container">
+                                    <a href="/authentication" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-base font-semibold leading-normal tracking-[-0.01em] hover:bg-primary/90 transition-colors">
+                                        <span class="truncate">Login</span>
+                                    </a>
+                                </div>
+
+                                <!-- User Profile Dropdown -->
+                                <div 
+                                    id="user-profile-container" 
+                                    class="relative" 
+                                    style="display: none;"
+                                    x-data="{ isOpen: false }" 
+                                    @keydown.escape.window="isOpen = false"
+                                >
+                                    <button 
+                                        @click="isOpen = !isOpen" 
+                                        class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary"
+                                    >
+                                        <div id="user-avatar-display" class="flex items-center justify-center size-full rounded-full">
+                                        </div>
+                                    </button>
+                                    
+                                    <div 
+                                        x-show="isOpen"
+                                        @click.away="isOpen = false"
+                                        x-transition:enter="transition ease-out duration-100"
+                                        x-transition:enter-start="transform opacity-0 scale-95"
+                                        x-transition:enter-end="transform opacity-100 scale-100"
+                                        x-transition:leave="transition ease-in duration-75"
+                                        x-transition:leave-start="transform opacity-100 scale-100"
+                                        x-transition:leave-end="transform opacity-0 scale-95"
+                                        class="absolute right-0 mt-2 w-48 origin-top-right bg-white rounded-md shadow-lg py-1 z-20 border border-gray-100"
+                                    >
+                                        <a class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" href="/account">Account</a>
+                                        <a id="logout-button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </header>
+
+                    <!-- Mobile Header -->
+                    <header class="md:hidden flex items-center justify-between p-4 border-b border-solid border-gray-200">
+                        <div class="flex items-center gap-3">
+                            <img src="assets/images/seris.png" 
+                                 alt="Seris Logo" 
+                                 style="width:58px; height:48px; object-fit:contain;" />
+                            <h2 class="text-text-dark text-xl font-bold">Seris</h2>
+                        </div>
+                        <a class="text-text-light text-base font-medium" href="/serisclients">Clients</a>
+                    </header>
+
+                    <main class="flex-1 pb-20 md:pb-0">
+                        <!-- ======================= -->
+                        <!--   SERVICES SECTION      -->
+                        <!-- ======================= -->
+                        <section class="px-4 md:px-10 lg:px-20 py-16">
+                            <h2 class="text-text-dark text-3xl md:text-4xl font-bold leading-tight tracking-tight mb-3 text-center">Our Expertise – Tailored to Your Needs</h2>
+                            <p class="text-text-light text-lg font-normal leading-normal mb-12 text-center max-w-3xl mx-auto">We deliver end-to-end solutions to help your business thrive online. Each project is built with precision, creativity, and scalability in mind.</p>
+                            
+                            <!-- Loading State -->
+                            <div id="loading-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                                <div class="flex flex-col gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm animate-pulse">
+                                    <div class="w-full aspect-video bg-gray-200 rounded-lg mb-2"></div>
+                                    <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                                    <div class="h-4 bg-gray-200 rounded"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                </div>
+                                <div class="flex flex-col gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm animate-pulse">
+                                    <div class="w-full aspect-video bg-gray-200 rounded-lg mb-2"></div>
+                                    <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                                    <div class="h-4 bg-gray-200 rounded"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                </div>
+                                <div class="flex flex-col gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm animate-pulse">
+                                    <div class="w-full aspect-video bg-gray-200 rounded-lg mb-2"></div>
+                                    <div class="h-6 bg-gray-200 rounded w-3/4"></div>
+                                    <div class="h-4 bg-gray-200 rounded"></div>
+                                    <div class="h-4 bg-gray-200 rounded w-5/6"></div>
+                                </div>
+                            </div>
+
+                            <!-- Services Grid -->
+                            <div id="services-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" style="display: none;">
+                            </div>
+
+                            <!-- Error Message -->
+                            <div id="error-message" class="hidden text-center py-8">
+                                <span class="material-symbols-outlined text-red-500 text-5xl mb-4">error</span>
+                                <p class="text-text-dark text-lg font-semibold mb-2">Failed to Load Services</p>
+                                <p class="text-text-light mb-4" id="error-text"></p>
+                                <button onclick="loadServices()" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-11 px-6 bg-primary text-white text-base font-semibold leading-normal tracking-[-0.01em] mx-auto hover:bg-primary/90 transition-colors">
+                                    <span class="truncate">Try Again</span>
+                                </button>
+                            </div>
+
+                            <!-- Empty State -->
+                            <div id="empty-state" class="hidden text-center py-12">
+                                <span class="material-symbols-outlined text-gray-300 text-6xl mb-4">inventory_2</span>
+                                <p class="text-text-dark text-xl font-semibold mb-2">No Services Available</p>
+                                <p class="text-text-light">Check back later for new services and solutions.</p>
+                            </div>
+                        </section>
+                    </main>
+
+                    <!-- ======================= -->
+                    <!--     FOOTER SECTION      -->
+                    <!-- ======================= -->
+                    <footer class="bg-white text-text-light border-t border-gray-200">
+                        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                                <div><h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Quick Links</h3><ul class="mt-4 space-y-3"><li><a class="text-base hover:text-primary" href="#">Home</a></li><li><a class="text-base hover:text-primary" href="#">Services</a></li><li><a class="text-base hover:text-primary" href="#">About</a></li><li><a class="text-base hover:text-primary" href="#">Contact</a></li></ul></div>
+                                <div><h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Social</h3><ul class="mt-4 space-y-3"><li><a class="text-base hover:text-primary" href="#">LinkedIn</a></li><li><a class="text-base hover:text-primary" href="#">GitHub</a></li><li><a class="text-base hover:text-primary" href="#">Instagram</a></li></ul></div>
+                                <div class="col-span-2"><h3 class="text-sm font-semibold text-gray-500 tracking-wider uppercase">Seris</h3><p class="mt-4 text-base">Your Partner for Innovative Digital Solutions</p></div>
+                            </div>
+                            <div class="mt-8 border-t border-gray-200 pt-8 text-center text-sm"><p>© 2024 Seris. All rights reserved.</p></div>
+                        </div>
+                    </footer>
+
+                    <!-- Mobile Navigation -->
+                    <nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex justify-around p-2 z-10 shadow-[0_-1px_3px_rgba(0,0,0,0.1)]">
+                        <a class="flex flex-col items-center text-gray-500 hover:text-primary w-full py-1" href="/SerisWebs"><span class="material-symbols-outlined">home</span><span class="text-xs font-medium">Home</span></a>
+                        <a class="flex flex-col items-center text-primary w-full py-1" href="/buildyoursite"><span class="material-symbols-outlined">design_services</span><span class="text-xs font-medium">Services</span></a>
+                        <a class="flex flex-col items-center text-gray-500 hover:text-primary w-full py-1" href="/yourprojects"><span class="material-symbols-outlined">folder_managed</span><span class="text-xs font-medium">Your Project</span></a>
+                        <a class="flex flex-col items-center text-gray-500 hover:text-primary w-full py-1" href="/account"><span class="material-symbols-outlined">account_circle</span><span class="text-xs font-medium">Account</span></a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!--          MAIN SCRIPT                          -->
+    <!-- ============================================= -->
+    <script>
+        const API_BASE = "https://seris-backend.onrender.com";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            handleUserAuthentication();
+            loadServices();
+        });
+
+        function handleUserAuthentication() {
+            const loginButtonContainer = document.getElementById("login-button-container");
+            const userProfileContainer = document.getElementById("user-profile-container");
+            const userAvatarDisplay = document.getElementById("user-avatar-display");
+            const logoutButton = document.getElementById("logout-button");
+            
+            const userToken = localStorage.getItem("token");
+            const userData = localStorage.getItem("user");
+
+            if (userToken && userData) {
+                try {
+                    const user = JSON.parse(userData);
+
+                    if (loginButtonContainer) {
+                        loginButtonContainer.style.display = "none";
+                    }
+
+                    if (userProfileContainer) {
+                        userProfileContainer.style.display = "block";
+                    }
+                    
+                    if (userAvatarDisplay && user.name) {
+                        const userInitial = user.name.charAt(0).toUpperCase();
+                        userAvatarDisplay.innerHTML = "";
+                        userAvatarDisplay.style.backgroundImage = "";
+                        userAvatarDisplay.classList.add('bg-primary', 'text-white', 'font-bold', 'text-xl');
+                        userAvatarDisplay.textContent = userInitial;
+                    }
+
+                    if (logoutButton) {
+                        logoutButton.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            localStorage.removeItem("token");
+                            localStorage.removeItem("user");
+                            window.location.reload();
+                        });
+                    }
+                } catch (error) {
+                    console.error("Failed to parse user data:", error);
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("user");
+                }
+            } else {
+                if (loginButtonContainer) {
+                    loginButtonContainer.style.display = "flex";
+                }
+                if (userProfileContainer) {
+                    userProfileContainer.style.display = "none";
+                }
+            }
+        }
+
+        async function loadServices() {
+            const loadingContainer = document.getElementById('loading-container');
+            const servicesContainer = document.getElementById('services-container');
+            const errorMessage = document.getElementById('error-message');
+            const emptyState = document.getElementById('empty-state');
+            
+            errorMessage.classList.add('hidden');
+            emptyState.classList.add('hidden');
+            
+            try {
+                const response = await fetch(`${API_BASE}/api/services`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (!data.success) {
+                    throw new Error(data.message || 'Failed to fetch services');
+                }
+                
+                const services = data.services || [];
+                
+                loadingContainer.style.display = 'none';
+                
+                if (services.length === 0) {
+                    emptyState.classList.remove('hidden');
+                    return;
+                }
+                
+                servicesContainer.style.display = 'grid';
+                servicesContainer.innerHTML = '';
+                
+                services.forEach(service => {
+                    servicesContainer.appendChild(createServiceCard(service));
+                });
+                
+            } catch (error) {
+                console.error('Error loading services:', error);
+                
+                loadingContainer.style.display = 'none';
+                errorMessage.classList.remove('hidden');
+                document.getElementById('error-text').textContent = error.message;
+            }
+        }
+
+        function createServiceCard(service) {
+            const card = document.createElement('div');
+            card.className = 'flex flex-col gap-4 p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-shadow';
+            
+            const thumbnailUrl = service.thumbnail 
+                ? `${API_BASE}/${service.thumbnail}` 
+                : 'https://via.placeholder.com/400x300/2563EB/FFFFFF?text=Service';
+            
+            card.innerHTML = `
+                <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-2" 
+                     style="background-image: url('${thumbnailUrl}');"
+                     onerror="this.style.backgroundImage='url(https://via.placeholder.com/400x300/2563EB/FFFFFF?text=Service)'">
+                </div>
+                <div>
+                    <p class="text-text-dark text-xl font-semibold leading-normal mb-2">${escapeHtml(service.name)}</p>
+                    <p class="text-text-light text-base font-normal leading-normal mb-4">${escapeHtml(service.description)}</p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-2xl font-bold text-primary">₹${formatPrice(service.price)}</span>
+                        <button 
+                            onclick="selectService('${service._id}')"
+                            class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-base font-semibold leading-normal tracking-[-0.01em] hover:bg-primary/90 transition-colors"
+                        >
+                            <span class="truncate">Select</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        function selectService(serviceId) {
+            console.log('Selected service:', serviceId);
+            alert(`Service selected! ID: ${serviceId}\n\nRedirecting to service details...`);
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('en-IN').format(price);
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+    
+    <!-- Alpine.js Script -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</body>
+</html>
