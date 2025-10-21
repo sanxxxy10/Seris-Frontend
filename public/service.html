@@ -320,11 +320,13 @@
                 ? `${API_BASE}/${service.thumbnail}` 
                 : 'https://via.placeholder.com/400x300/2563EB/FFFFFF?text=Service';
             
-            card.innerHTML = `
-                <div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-2" 
-                     style="background-image: url('${thumbnailUrl}');"
-                     onerror="this.style.backgroundImage='url(https://via.placeholder.com/400x300/2563EB/FFFFFF?text=Service)'">
-                </div>
+card.innerHTML = `
+<div class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-lg mb-2"
+     style="background-image: url('${service.thumbnail}');"
+     onerror="this.style.backgroundImage='url(https://via.placeholder.com/400x300/2563EB/FFFFFF?text=Service)'">
+</div>
+
+
                 <div>
                     <p class="text-text-dark text-xl font-semibold leading-normal mb-2">${escapeHtml(service.name)}</p>
                     <p class="text-text-light text-base font-normal leading-normal mb-4">${escapeHtml(service.description)}</p>
