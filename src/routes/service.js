@@ -1,20 +1,9 @@
 import express from "express";
-import multer from "multer";
-import mongoose from "mongoose";
 import Service from "../models/Service.js";
 import { verifyToken } from "../middleware/auth.js";
+import { upload } from "../config/cloudinary.js"; // Cloudinary uploader
 
 const router = express.Router();
-
-// ✅ Setup multer storage
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"),
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, uniqueSuffix + "-" + file.originalname);
-  },
-});
-const upload = multer({ storage });
 
 // ✅ Add new service (admin only)
 router.post("/", verifyToken, upload.single("thumbnail"), async (req, res) => {
@@ -24,9 +13,11 @@ router.post("/", verifyToken, upload.single("thumbnail"), async (req, res) => {
     }
 
     const { name, description, price } = req.body;
+
+    // Cloudinary automatically returns the full URL in req.file.path
     const thumbnail = req.file ? req.file.path : "";
 
-    // ✅ Create and save new service properly
+    // ✅ Create and save new service
     const newService = new Service({
       name,
       description,
@@ -34,9 +25,8 @@ router.post("/", verifyToken, upload.single("thumbnail"), async (req, res) => {
       thumbnail,
     });
 
-    await newService.save(); // <-- save to DB
+    await newService.save();
 
-    // ✅ Send success response
     res.status(201).json({ success: true, service: newService });
 
   } catch (error) {
