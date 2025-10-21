@@ -328,10 +328,12 @@
      style="background-image: url('${service.thumbnail}');"
      onerror="this.style.backgroundImage='url(https://via.placeholder.com/400x300/2563EB/FFFFFF?text=Service)'">
 </div>
-                <div class="flex flex-col flex-grow">
+
+
+                <div>
                     <p class="text-text-dark text-xl font-semibold leading-normal mb-2">${escapeHtml(service.name)}</p>
-                    <p class="text-text-light text-base font-normal leading-normal mb-4 flex-grow">${escapeHtml(service.description)}</p>
-                    <div class="flex items-center justify-between mt-auto">
+                    <p class="text-text-light text-base font-normal leading-normal mb-4">${escapeHtml(service.description)}</p>
+                    <div class="flex items-center justify-between">
                         <span class="text-2xl font-bold text-primary">₹${formatPrice(service.price)}</span>
                         <button 
                             onclick="selectService('${service._id}')"
@@ -343,11 +345,13 @@
                 </div>
             `;
             
+            
             return card;
         }
 
         function selectService(serviceId) {
-            window.location.href = `yourprojects.html?serviceId=${serviceId}`;
+            // Redirect to form.html and pass the serviceId as a URL parameter.
+            window.location.href = `form.html?serviceId=${serviceId}`;
         }
 
         function formatPrice(price) {
