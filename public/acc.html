@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Seris Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#007BFF",
+            "background-light": "#F8F9FA",
+            "background-dark": "#101c22",
+            "text-light": "#343A40",
+            "text-dark": "#E5E7EB",
+            "accent": "#28A745",
+          },
+          fontFamily: {
+            "display": ["Manrope", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-text-light dark:text-text-dark">
+<div class="relative flex min-h-screen w-full flex-col group/design-root">
+<div class="flex flex-col lg:flex-row flex-1">
+<aside class="hidden lg:flex w-full lg:w-64 bg-white dark:bg-background-dark lg:border-r lg:border-gray-200 dark:lg:border-gray-700 p-4 shrink-0 flex-col gap-8">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-2 rounded-lg text-white">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 2c2.21 0 4 1.79 4 4v1H8v-1c0-2.21 1.79-4 4-4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<div class="flex flex-col">
+<h1 class="text-lg font-bold">Seris</h1>
+<p class="text-sm text-gray-500 dark:text-gray-400">Digital Solutions</p>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined">home</span>
+              Back to Home
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 dark:bg-primary/30 text-primary font-medium" href="#">
+<span class="material-symbols-outlined">person</span>
+              Profile
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800" href="#">
+<span class="material-symbols-outlined">folder_managed</span> Past Projects
+            </a>
+</nav>
+<div class="mt-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400" href="#logout-popup">
+<span class="material-symbols-outlined">logout</span>
+          Logout
+        </a>
+</div>
+</aside>
+<div class="flex flex-col flex-1">
+<header class="bg-white dark:bg-background-dark border-b border-gray-200 dark:border-gray-700 px-4 py-3 flex items-center justify-between sticky top-0 z-10 lg:px-6">
+<div class="flex items-center gap-2">
+<button class="lg:hidden p-2 -ml-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="bg-primary p-2 rounded-lg text-white">
+<svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3zm0 2c2.21 0 4 1.79 4 4v1H8v-1c0-2.21 1.79-4 4-4z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+<h1 class="text-base font-bold">Seris</h1>
+</div>
+<h2 class="text-lg font-bold hidden md:block lg:hidden ml-4">Dashboard</h2>
+</div>
+<div class="flex items-center gap-2">
+<a class="text-sm font-medium hover:text-primary hidden sm:block" href="#">Services</a>
+<button class="p-2">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<a class="p-2" href="#logout-popup">
+<span class="material-symbols-outlined">logout</span>
+</a>
+<div class="relative">
+<button class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9" data-alt="User profile picture" style='background-image: url("https://placeholder.pics/svg/300");'></button>
+</div>
+</div>
+</header>
+<main class="flex-1 p-4 md:p-8 pb-24 lg:pb-8">
+<div class="max-w-4xl mx-auto">
+<div class="mb-8">
+<p class="text-3xl md:text-4xl font-black tracking-tight">Welcome, Jane Doe!</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-1">
+<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+<h3 class="text-xl font-bold mb-4">Account Overview</h3>
+<div class="space-y-4">
+<div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+<p class="text-sm text-gray-500 dark:text-gray-400">Full Name</p>
+<p class="font-medium">Jane Doe</p>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+<p class="text-sm text-gray-500 dark:text-gray-400">Email Address</p>
+<p class="font-medium">jane.doe@example.com</p>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+<p class="text-sm text-gray-500 dark:text-gray-400">Company Name</p>
+<p class="font-medium">Innovate Inc.</p>
+</div>
+<div class="border-t border-gray-200 dark:border-gray-700 pt-4">
+<p class="text-sm text-gray-500 dark:text-gray-400">Account ID</p>
+<p class="font-medium">SERIS-ID-98765</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2">
+<div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-xl font-bold">Profile Details</h3>
+<button class="text-sm font-medium text-primary hover:underline">Edit Profile</button>
+</div>
+<form class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4">
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="first_name">First Name</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-gray-100 dark:bg-gray-700" disabled="" id="first_name" name="first_name" type="text" value="Jane"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="last_name">Last Name</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-gray-100 dark:bg-gray-700" disabled="" id="last_name" name="last_name" type="text" value="Doe"/>
+</div>
+<div class="md:col-span-2">
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="phone_number">Phone Number</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-gray-100 dark:bg-gray-700" disabled="" id="phone_number" name="phone_number" type="tel" value="+1 (555) 123-4567"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="job_title">Job Title</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-gray-100 dark:bg-gray-700" disabled="" id="job_title" name="job_title" type="text" value="Project Manager"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-gray-700 dark:text-gray-300" for="company_website">Company Website</label>
+<input class="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-primary focus:ring-primary sm:text-sm bg-gray-100 dark:bg-gray-700" disabled="" id="company_website" name="company_website" type="url" value="https://innovate.inc"/>
+</div>
+<div class="md:col-span-2 pt-4 flex justify-end gap-3">
+<button class="px-4 py-2 text-sm font-medium rounded-md bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 hover:bg-gray-300 dark:hover:bg-gray-600" type="button">Cancel</button>
+<button class="px-4 py-2 text-sm font-medium rounded-md bg-primary text-white hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-background-dark focus:ring-primary" type="submit">Save Changes</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+<div class="mt-8">
+<div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-sm">
+<h3 class="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Past Projects</h3>
+<div class="divide-y divide-gray-200 dark:divide-gray-700 sm:space-y-4">
+<div class="py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-primary/10 text-primary p-2 rounded-full hidden sm:flex">
+<span class="material-symbols-outlined">folder</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-base sm:text-lg">E-commerce Platform</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Completed: 15-Mar-2023</p>
+</div>
+</div>
+<a class="text-sm font-medium text-primary hover:underline flex items-center gap-1 self-start sm:self-center bg-primary/10 sm:bg-transparent dark:bg-primary/20 sm:dark:bg-transparent px-3 py-2 rounded-md" href="#">
+                View Details
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-primary/10 text-primary p-2 rounded-full hidden sm:flex">
+<span class="material-symbols-outlined">phone_iphone</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-base sm:text-lg">Mobile App Redesign</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Completed: 22-Dec-2022</p>
+</div>
+</div>
+<a class="text-sm font-medium text-primary hover:underline flex items-center gap-1 self-start sm:self-center bg-primary/10 sm:bg-transparent dark:bg-primary/20 sm:dark:bg-transparent px-3 py-2 rounded-md" href="#">
+                View Details
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+<div class="flex items-start gap-4">
+<div class="bg-primary/10 text-primary p-2 rounded-full hidden sm:flex">
+<span class="material-symbols-outlined">cloud_upload</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-base sm:text-lg">Cloud Migration</h4>
+<p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Completed: 05-Sep-2022</p>
+</div>
+</div>
+<a class="text-sm font-medium text-primary hover:underline flex items-center gap-1 self-start sm:self-center bg-primary/10 sm:bg-transparent dark:bg-primary/20 sm:dark:bg-transparent px-3 py-2 rounded-md" href="#">
+                View Details
+                <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="lg:hidden bg-white dark:bg-background-dark border-t border-gray-200 dark:border-gray-700 p-2 flex justify-around fixed bottom-0 left-0 right-0 z-10">
+<a class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg hover:text-primary text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">design_services</span>
+<span class="text-xs font-medium">Services</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg hover:text-primary text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">folder_managed</span>
+<span class="text-xs font-medium">Projects</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-3 py-2 rounded-lg hover:text-primary text-gray-500 dark:text-gray-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Account</span>
+</a>
+</nav>
+</div>
+</div>
+<div class="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none target:opacity-100 target:pointer-events-auto transition-opacity duration-300" id="logout-popup">
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8 text-center max-w-sm w-full relative">
+<a class="absolute top-2 right-2 p-1 rounded-full text-gray-500 hover:bg-gray-200 dark:hover:bg-gray-700" href="#">
+<span class="material-symbols-outlined">close</span>
+</a>
+<div class="bg-accent/20 text-accent rounded-full size-16 flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined !text-4xl">check_circle</span>
+</div>
+<h2 class="text-2xl font-bold mb-2 text-text-light dark:text-text-dark">Logout Successful</h2>
+<p class="text-gray-500 dark:text-gray-400 mb-6">You have been successfully logged out.</p>
+<a class="inline-block bg-primary text-white font-medium px-6 py-2 rounded-lg hover:bg-primary/90" href="#">Close</a>
+</div>
+</div>
+</div>
+</body></html>

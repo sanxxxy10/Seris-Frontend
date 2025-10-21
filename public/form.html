@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Your Projects - Seris</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+        /* Style for the gradient blur effect container */
+        .gradient-blur-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -10; /* Ensure it's behind all content */
+        }
+        /* Style for the individual blurred shapes (blobs) */
+        .blur-blob {
+            position: absolute;
+            border-radius: 9999px; /* full circle */
+            filter: blur(100px); /* Heavy blur effect */
+            opacity: 0.4; /* Adjust opacity for subtlety */
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3B82F6",
+                        "background-dark": "#030712", /* Darker base for better contrast */
+                        "text-light": "#D1D5DB",
+                        "text-dark": "#F9FAFB",
+                        "card-dark": "rgba(17, 24, 39, 0.8)", /* Slightly more transparent */
+                        "border-dark": "#374151"
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-dark text-text-light font-display">
+
+    <!-- Gradient Blur Background -->
+    <div class="gradient-blur-container">
+        <div class="blur-blob bg-blue-600" style="top: -20%; left: -10%; width: 40rem; height: 40rem;"></div>
+        <div class="blur-blob bg-purple-600" style="bottom: -20%; right: -10%; width: 50rem; height: 50rem;"></div>
+    </div>
+
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <!-- ======================= -->
+            <!--    HEADER SECTION       -->
+            <!-- ======================= -->
+            <header class="hidden md:flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark px-10 py-4 bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
+                <div class="flex items-center gap-4 text-text-dark">
+                    <img src="assets/images/seris.png" alt="Seris Logo" style="width:48px; height:48px; object-fit:contain;" />
+                    <h2 class="text-text-dark text-xl font-bold leading-tight tracking-[-0.015em]">Seris</h2>
+                </div>
+                <div class="flex flex-1 justify-end gap-8">
+                    <div class="flex items-center gap-9">
+                        <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/SerisWebs">Home</a>
+                        <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/buildyoursite">Services</a>
+                        <a class="text-primary text-base font-medium leading-normal" href="/yourprojects">Your Projects</a>
+                        <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/serisclients">Clients</a>
+                    </div>
+                    <div class="flex gap-4 items-center">
+                        <div id="login-button-container">
+                            <a href="/authentication" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-base font-semibold leading-normal tracking-[-0.01em] hover:bg-primary/90 transition-colors">
+                                <span class="truncate">Login</span>
+                            </a>
+                        </div>
+                        <div id="user-profile-container" class="relative" style="display: none;" x-data="{ isOpen: false }" @keydown.escape.window="isOpen = false">
+                            <button @click="isOpen = !isOpen" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                <div id="user-avatar-display" class="flex items-center justify-center size-full rounded-full"></div>
+                            </button>
+                            <div x-show="isOpen" @click.away="isOpen = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 w-48 origin-top-right bg-card-dark rounded-md shadow-lg py-1 z-20 border border-border-dark">
+                               <a class="block px-4 py-2 text-sm text-text-light hover:bg-gray-700" href="/dashboard">Account</a>
+                                <a id="logout-button" class="block px-4 py-2 text-sm text-text-light hover:bg-gray-700 cursor-pointer">Logout</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Mobile Header -->
+            <header class="md:hidden flex items-center justify-between p-4 border-b border-solid border-border-dark bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
+                <div class="flex items-center gap-3">
+                    <img src="assets/images/seris.png" alt="Seris Logo" style="width:58px; height:48px; object-fit:contain;" />
+                    <h2 class="text-text-dark text-xl font-bold">Seris</h2>
+                </div>
+                <a class="text-text-light text-base font-medium" href="/serisclients">Clients</a>
+            </header>
+
+            <main class="flex-1 w-full">
+                <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+                    <!-- ======================= -->
+                    <!--     LEFT FORM SIDE      -->
+                    <!-- ======================= -->
+                    <div class="flex flex-col justify-center items-center px-4 md:px-10 lg:px-12 py-16">
+                        <div class="w-full max-w-2xl">
+                            <div class="text-center mb-10">
+                                <h1 class="text-text-dark text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4">Submit Your Project</h1>
+                                <p class="text-text-light text-lg font-normal leading-normal max-w-2xl mx-auto">Tell us about your vision, and we'll transform it into a stunning digital reality.</p>
+                            </div>
+
+                            <!-- Form Card -->
+                            <div class="bg-card-dark rounded-xl border border-border-dark shadow-lg p-6 md:p-8 backdrop-blur-md">
+                                <form id="project-form" class="space-y-8">
+                                    <!-- Personal Information -->
+                                    <div>
+                                        <h3 class="text-xl font-bold text-text-dark mb-4">Personal Information</h3>
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div>
+                                                <label for="name" class="block text-sm font-semibold text-text-light mb-2">Your Name *</label>
+                                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="John Doe">
+                                            </div>
+                                            <div>
+                                                <label for="companyName" class="block text-sm font-semibold text-text-light mb-2">Company Name</label>
+                                                <input type="text" id="companyName" name="companyName" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="Your Company Pvt Ltd">
+                                            </div>
+                                            <div>
+                                                <label for="email" class="block text-sm font-semibold text-text-light mb-2">Email Address *</label>
+                                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="john@company.com">
+                                            </div>
+                                            <div>
+                                                <label for="mobile" class="block text-sm font-semibold text-text-light mb-2">Mobile Number *</label>
+                                                <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="9876543210">
+                                                <p class="text-xs text-gray-400 mt-1">10 digits only</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Project Details -->
+                                    <div class="border-t border-border-dark pt-8">
+                                        <h3 class="text-xl font-bold text-text-dark mb-4">Project Details</h3>
+                                        <div class="space-y-6">
+                                            <div>
+                                                <label for="projectName" class="block text-sm font-semibold text-text-light mb-2">Project Name *</label>
+                                                <input type="text" id="projectName" name="projectName" required class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="e.g., E-commerce Platform for Fashion">
+                                            </div>
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                                <div id="website-type-wrapper">
+                                                    <label for="websiteType" class="block text-sm font-semibold text-text-light mb-2">Website Type *</label>
+                                                    <select id="websiteType" name="websiteType" required class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark">
+                                                        <option value="">Select website type</option>
+                                                        <option value="E-commerce">E-commerce</option>
+                                                        <option value="Portfolio">Portfolio</option>
+                                                        <option value="Corporate">Corporate Website</option>
+                                                        <option value="Blog">Blog/Magazine</option>
+                                                        <option value="Landing Page">Landing Page</option>
+                                                        <option value="Web Application">Web Application</option>
+                                                        <option value="Custom">Custom Solution</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label for="budget" class="block text-sm font-semibold text-text-light mb-2">Budget (₹)</label>
+                                                    <select id="budget" name="budget" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark">
+                                                        <option value="">Select budget range</option>
+                                                        <option value="10000-25000">₹10,000 - ₹25,000</option>
+                                                        <option value="25000-50000">₹25,000 - ₹50,000</option>
+                                                        <option value="50000-100000">₹50,000 - ₹1,00,000</option>
+                                                        <option value="100000-200000">₹1,00,000 - ₹2,00,000</option>
+                                                        <option value="200000+">₹2,00,000+</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label for="websiteLink" class="block text-sm font-semibold text-text-light mb-2">Existing Website Link</label>
+                                                <input type="url" id="websiteLink" name="websiteLink" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="https://example.com">
+                                                <p class="text-xs text-gray-400 mt-1">If you have an existing website you'd like us to redesign or reference</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Project Documents -->
+                                    <div class="border-t border-border-dark pt-8">
+                                        <h3 class="text-xl font-bold text-text-dark mb-4">Project Documents</h3>
+                                        <p class="text-sm text-gray-400 mb-4">Add links to any reference materials, requirements documents, or design inspiration (Google Drive, Dropbox, etc.)</p>
+                                        <div id="documents-container" class="space-y-4">
+                                            <div class="document-item grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                <div>
+                                                    <label class="block text-sm font-medium text-text-light mb-2">Document Name</label>
+                                                    <input type="text" name="docName[]" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="e.g., Design Mockups">
+                                                </div>
+                                                <div>
+                                                    <label class="block text-sm font-medium text-text-light mb-2">Document Link</label>
+                                                    <input type="url" name="docLink[]" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="https://drive.google.com/...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="button" id="add-document-btn" class="mt-4 flex items-center gap-2 text-primary hover:text-primary/80 font-medium">
+                                            <span class="material-symbols-outlined text-xl">add_circle</span>
+                                            Add Another Document
+                                        </button>
+                                    </div>
+
+                                    <!-- Submit Button -->
+                                    <div class="border-t border-border-dark pt-8">
+                                        <button type="submit" id="submit-button" class="w-full flex items-center justify-center h-12 px-8 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                            <span id="submit-text">Submit Project</span>
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ======================= -->
+                    <!-- RIGHT ANIMATION SIDE    -->
+                    <!-- ======================= -->
+                    <div class="hidden lg:flex justify-center items-center sticky top-0 h-screen">
+                         <div class="w-3/4 h-3/4 bg-card-dark rounded-xl border border-border-dark flex justify-center items-center backdrop-blur-md">
+                            <span class="text-text-light text-2xl">Animation Player Holder</span>
+                        </div>
+                    </div>
+
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ============================================= -->
+    <!--          MAIN SCRIPT                          -->
+    <!-- ============================================= -->
+    <script>
+        const API_BASE = "http://localhost:5000";
+
+        document.addEventListener("DOMContentLoaded", () => {
+            handleUserAuthentication();
+            populateServiceType();
+            setupFormHandler();
+            setupDocumentHandler();
+        });
+
+        function handleUserAuthentication() {
+            const loginButtonContainer = document.getElementById("login-button-container");
+            const userProfileContainer = document.getElementById("user-profile-container");
+            const userAvatarDisplay = document.getElementById("user-avatar-display");
+            const logoutButton = document.getElementById("logout-button");
+            
+            const userToken = localStorage.getItem("token");
+            const userData = localStorage.getItem("user");
+
+            if (userToken && userData) {
+                try {
+                    const user = JSON.parse(userData);
+
+                    if (loginButtonContainer) loginButtonContainer.style.display = "none";
+                    if (userProfileContainer) userProfileContainer.style.display = "block";
+                    
+                    if (userAvatarDisplay && user.name) {
+                        const userInitial = user.name.charAt(0).toUpperCase();
+                        userAvatarDisplay.innerHTML = "";
+                        userAvatarDisplay.style.backgroundImage = "";
+                        userAvatarDisplay.classList.add('bg-primary', 'text-white', 'font-bold', 'text-xl');
+                        userAvatarDisplay.textContent = userInitial;
+                    }
+
+                    if (logoutButton) {
+                        logoutButton.addEventListener("click", (e) => {
+                            e.preventDefault();
+                            localStorage.removeItem("token");
+                            localStorage.removeItem("user");
+                            window.location.reload();
+                        });
+                    }
+                    
+                    autoFillUserData(user);
+
+                } catch (error) {
+                    console.error("Failed to parse user data:", error);
+                    localStorage.removeItem("token");
+                    localStorage.removeItem("user");
+                }
+            } else {
+                if (loginButtonContainer) loginButtonContainer.style.display = "flex";
+                if (userProfileContainer) userProfileContainer.style.display = "none";
+            }
+        }
+
+        async function populateServiceType() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const serviceId = urlParams.get('serviceId');
+
+            if (!serviceId) return;
+
+            const wrapper = document.getElementById('website-type-wrapper');
+            if (!wrapper) return;
+
+            try {
+                const response = await fetch(`${API_BASE}/api/services`);
+                if (!response.ok) {
+                    throw new Error('Could not fetch the services list from the server.');
+                }
+                
+                const data = await response.json();
+                if (!data.success || !Array.isArray(data.services)) {
+                    throw new Error('Invalid data format received for services.');
+                }
+                
+                const selectedService = data.services.find(service => service._id === serviceId);
+
+                if (selectedService) {
+                    wrapper.innerHTML = `
+                        <label for="websiteType" class="block text-sm font-semibold text-text-light mb-2">Website Type *</label>
+                        <input type="hidden" id="websiteTypeId" name="websiteTypeId" value="${selectedService._id}" required />
+                        <input type="text" id="websiteType" name="websiteType" value="${selectedService.name}" readonly required class="w-full px-4 py-3 bg-gray-700 border border-border-dark rounded-lg cursor-not-allowed" />
+                    `;
+                    const companyName = document.getElementById('companyName').value || 'My Company';
+                    document.getElementById('projectName').value = `${selectedService.name} for ${companyName}`;
+                } else {
+                    throw new Error('The selected service could not be found.');
+                }
+            } catch (error) {
+                console.error('Error processing service:', error);
+                wrapper.innerHTML += `<p class="text-red-500 text-sm mt-1">${error.message}</p>`;
+            }
+        }
+
+        function autoFillUserData(user) {
+            if (user.name) document.getElementById('name').value = user.name;
+            if (user.email) document.getElementById('email').value = user.email;
+            if (user.mobile) document.getElementById('mobile').value = user.mobile;
+            if (user.companyName) document.getElementById('companyName').value = user.companyName;
+        }
+
+        function setupDocumentHandler() {
+            const addBtn = document.getElementById('add-document-btn');
+            const container = document.getElementById('documents-container');
+
+            addBtn.addEventListener('click', () => {
+                const newDocItem = document.createElement('div');
+                newDocItem.className = 'document-item grid grid-cols-1 md:grid-cols-2 gap-4';
+                newDocItem.innerHTML = `
+                    <div>
+                        <label class="block text-sm font-medium text-text-light mb-2">Document Name</label>
+                        <input type="text" name="docName[]" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="e.g., Design Mockups">
+                    </div>
+                    <div class="flex gap-2">
+                        <div class="flex-1">
+                            <label class="block text-sm font-medium text-text-light mb-2">Document Link</label>
+                            <input type="url" name="docLink[]" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="https://drive.google.com/...">
+                        </div>
+                        <div class="flex items-end">
+                            <button type="button" class="remove-doc-btn h-12 px-3 text-red-500 hover:text-red-700 transition-colors">
+                                <span class="material-symbols-outlined">delete</span>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(newDocItem);
+                newDocItem.querySelector('.remove-doc-btn').addEventListener('click', () => newDocItem.remove());
+            });
+        }
+
+        function setupFormHandler() {
+            const form = document.getElementById('project-form');
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const submitButton = document.getElementById('submit-button');
+                const token = localStorage.getItem('token');
+                
+                if (!token) {
+                    alert('Please login to submit a project.');
+                    window.location.href = '/authentication';
+                    return;
+                }
+
+                submitButton.disabled = true;
+                document.getElementById('submit-text').textContent = 'Submitting...';
+                
+                const docNames = document.getElementsByName('docName[]');
+                const docLinks = document.getElementsByName('docLink[]');
+                const projectDocuments = [];
+                
+                for (let i = 0; i < docNames.length; i++) {
+                    const name = docNames[i].value.trim();
+                    const link = docLinks[i].value.trim();
+                    if (name && link) {
+                        projectDocuments.push({ name, driveLink: link });
+                    }
+                }
+
+                const websiteTypeId = document.getElementById('websiteTypeId');
+                const websiteTypeSelect = document.getElementById('websiteType');
+                
+                const formData = {
+                    name: document.getElementById('name').value,
+                    companyName: document.getElementById('companyName').value || undefined,
+                    email: document.getElementById('email').value,
+                    mobile: document.getElementById('mobile').value,
+                    projectName: document.getElementById('projectName').value,
+                    websiteType: websiteTypeId ? websiteTypeId.value : websiteTypeSelect.value,
+                    budget: document.getElementById('budget').value || undefined,
+                    websiteLink: document.getElementById('websiteLink').value || undefined,
+                    projectDocuments: projectDocuments.length > 0 ? projectDocuments : undefined
+                };
+                
+                try {
+                    const response = await fetch(`${API_BASE}/api/projects`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    const data = await response.json();
+                    if (!response.ok || !data.success) {
+                        throw new Error(data.message || 'Failed to submit the project.');
+                    }
+                    
+                    alert('Project submitted successfully!');
+                    form.reset();
+                    window.location.href = '/yourprojects';
+                    
+                } catch (error) {
+                    alert(`Submission Failed: ${error.message}`);
+                } finally {
+                    submitButton.disabled = false;
+                    document.getElementById('submit-text').textContent = 'Submit Project';
+                }
+            });
+        }
+    </script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html>
