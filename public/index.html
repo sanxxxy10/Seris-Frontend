@@ -418,10 +418,9 @@
                     <!-- Desktop Header -->
                     <header class="hidden md:flex fixed top-0 left-0 right-0 z-50 items-center justify-between whitespace-nowrap bg-background-dark/70 backdrop-blur-md px-10 py-3 shadow-md shadow-slate-900/10 transition-all duration-300">
                         <a class="flex items-center gap-3" href="/SerisWebs">
-                            <div class="size-8 text-white">
-                                <div class="flex items-center gap-4 text-text-dark">
+                            <div class="size-12 text-white">
+                                <div class="flex items-center gap-6 text-text-dark">
                             <img src="assets/images/seris.png" alt="Seris Logo" style="width:50px; height:50px; object-fit:contain;" />
-                            <h1 class="text-text-dark text-xl font-bold leading-tight tracking-[-0.015em]">Seris</h2>
                         </div>
                                     <g clip-path="url(#clip0_6_319)">
                                         <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="#3B82F6"></path>
@@ -472,8 +471,10 @@
                     <!-- Mobile Header -->
                     <header class="md:hidden fixed top-0 left-0 right-0 z-50 flex items-center justify-between p-4 bg-background-dark/80 backdrop-blur-sm shadow-md shadow-slate-900/10">
                         <a class="flex items-center gap-3" href="/SerisWebs">
-                            <div class="size-8 text-primary">
-                                <svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                <div class="size-10 text-white">
+                                <div class="flex items-center gap-6 text-text-dark">
+                            <img src="assets/images/seris.png" alt="Seris Logo" style="width:50px; height:50px; object-fit:contain;" />
+                        </div>
                                     <g clip-path="url(#clip1_6_319)">
                                         <path d="M8.57829 8.57829C5.52816 11.6284 3.451 15.5145 2.60947 19.7452C1.76794 23.9758 2.19984 28.361 3.85056 32.3462C5.50128 36.3314 8.29667 39.7376 11.8832 42.134C15.4698 44.5305 19.6865 45.8096 24 45.8096C28.3135 45.8096 32.5302 44.5305 36.1168 42.134C39.7033 39.7375 42.4987 36.3314 44.1494 32.3462C45.8002 28.361 46.2321 23.9758 45.3905 19.7452C44.549 15.5145 42.4718 11.6284 39.4217 8.57829L24 24L8.57829 8.57829Z" fill="#3B82F6"></path>
                                         <path d="M24 2.19037e-06C19.6865 -0.000100492 15.4698 1.27902 11.8832 3.67554C8.29667 6.07206 5.50128 9.47822 3.85056 13.4634C2.19984 17.4486 1.76794 21.8338 2.60947 26.0645C3.451 30.2951 5.52816 34.1812 8.57829 37.2314L24 21.8096L39.4217 6.3879C36.3716 3.33777 32.4855 1.26058 28.2548 0.419052C24.0242 -0.422473 19.639 -0.000100492 15.6538 1.65062C11.6686 3.30134 8.26245 6.09673 5.86598 9.68326C3.4695 13.2698 2.19037 17.4865 2.19037e-06 21.8096" fill="url(#paint0_linear_mobile)"></path>
@@ -489,7 +490,6 @@
                                     </defs>
                                 </svg>
                             </div>
-                            <h2 class="text-white text-xl font-bold">Seris</h2>
                         </a>
                         <a class="text-gray-300 text-base font-medium" href="/serisclients">Clients</a>
                     </header>
@@ -560,10 +560,14 @@
 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tighter text-white">Transforming Ideas into <br class="hidden lg:inline"/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">Stunning Digital Experiences</span></h1>
 <p class="mt-6 text-lg md:text-xl text-blue-200/80 max-w-xl mx-auto md:mx-0">At Seris, we craft innovative web solutions and custom software that empower your business to grow. From responsive websites to robust applications, your digital vision is our mission.</p>
 <div class="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4">
-<button class="w-full sm:w-auto flex items-center justify-center rounded-full h-14 px-10 bg-gradient-to-r from-primary to-blue-500 text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105 group">
-<span class="truncate">Explore Our Services</span>
-<span class="material-symbols-outlined ml-2 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
+<button 
+  onclick="window.location.href='/buildyoursite'"
+  class="w-full sm:w-auto flex items-center justify-center rounded-full h-14 px-10 bg-gradient-to-r from-primary to-blue-500 text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105 group"
+>
+  <span class="truncate">Explore Our Services</span>
+  <span class="material-symbols-outlined ml-2 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </button>
+
 </div>
 </div>
 </div>
@@ -627,7 +631,7 @@
                         We deliver end-to-end solutions to help your business thrive online. Each project is built with precision, creativity, and scalability in mind.
                     </p>
 <div class="mt-8">
-<button class="flex items-center justify-center rounded-full h-12 px-8 bg-primary/10 border border-primary/40 text-white text-base font-semibold shadow-lg hover:bg-primary/30 transition-all duration-300 ease-in-out transform hover:scale-105 group mx-auto lg:mx-0">
+<button onclick="window.location.href='/buildyoursite'" class="flex items-center justify-center rounded-full h-12 px-8 bg-primary/10 border border-primary/40 text-white text-base font-semibold shadow-lg hover:bg-primary/30 transition-all duration-300 ease-in-out transform hover:scale-105 group mx-auto lg:mx-0">
 <span class="truncate">View All Services</span>
 <span class="material-symbols-outlined ml-2 transform group-hover:translate-x-1 transition-transform">arrow_forward</span>
 </button>

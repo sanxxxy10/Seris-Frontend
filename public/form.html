@@ -1,443 +1,520 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>Your Projects - Seris</title>
+    <title>Submit Your Project - Seris</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
     <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
-        }
-        /* Style for the gradient blur effect container */
-        .gradient-blur-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -10; /* Ensure it's behind all content */
-        }
-        /* Style for the individual blurred shapes (blobs) */
-        .blur-blob {
-            position: absolute;
-            border-radius: 9999px; /* full circle */
-            filter: blur(100px); /* Heavy blur effect */
-            opacity: 0.4; /* Adjust opacity for subtlety */
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24; }
+        .spinner { border: 4px solid rgba(255, 255, 255, 0.2); width: 20px; height: 20px; border-radius: 50%; border-left-color: #ffffff; animation: spin 1s ease infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        body {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
     </style>
     <script id="tailwind-config">
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#3B82F6",
-                        "background-dark": "#030712", /* Darker base for better contrast */
-                        "text-light": "#D1D5DB",
-                        "text-dark": "#F9FAFB",
-                        "card-dark": "rgba(17, 24, 39, 0.8)", /* Slightly more transparent */
-                        "border-dark": "#374151"
+                        "primary": "#4780FF", "background-dark": "#0A101D", "text-primary": "#F9FAFB", "text-secondary": "#A3AFC2", "card-dark": "#151E2F", "border-dark": "#374151", "accent": "#3BE9B4",
                     },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: { "DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px" }
+                    fontFamily: { "display": ["Inter", "sans-serif"] },
                 },
             },
         }
     </script>
 </head>
-<body class="bg-background-dark text-text-light font-display">
-
-    <!-- Gradient Blur Background -->
-    <div class="gradient-blur-container">
-        <div class="blur-blob bg-blue-600" style="top: -20%; left: -10%; width: 40rem; height: 40rem;"></div>
-        <div class="blur-blob bg-purple-600" style="bottom: -20%; right: -10%; width: 50rem; height: 50rem;"></div>
-    </div>
-
+<body class="bg-background-dark font-display text-text-secondary">
     <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
-        <div class="layout-container flex h-full grow flex-col">
-            <!-- ======================= -->
-            <!--    HEADER SECTION       -->
-            <!-- ======================= -->
-            <header class="hidden md:flex items-center justify-between whitespace-nowrap border-b border-solid border-border-dark px-10 py-4 bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
-                <div class="flex items-center gap-4 text-text-dark">
-                    <img src="assets/images/seris.png" alt="Seris Logo" style="width:48px; height:48px; object-fit:contain;" />
-                    <h2 class="text-text-dark text-xl font-bold leading-tight tracking-[-0.015em]">Seris</h2>
+        
+        <!-- HEADER -->
+        <header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between whitespace-nowrap bg-background-dark/80 backdrop-blur-sm border-b border-border-dark px-4 sm:px-10 py-3">
+            <div class="md:hidden flex items-center justify-between w-full">
+                <button onclick="history.back()" class="p-2 text-text-primary rounded-full hover:bg-white/10 transition-colors"><span class="material-symbols-outlined">arrow_back</span></button>
+                <a class="flex items-center gap-2" href="/SerisWebs">
+                    <div class="size-8"><img src="assets/images/seris.png" alt="Seris Logo" style="width:32px; height:32px;"/></div>
+                    <span class="text-text-primary text-lg font-bold">Seris</span>
+                </a>
+            </div>
+            <div class="hidden md:flex items-center justify-between w-full">
+                <div class="flex items-center gap-10">
+                    <a class="flex items-center gap-3" href="/SerisWebs">
+                        <div class="size-10"><img src="assets/images/seris.png" alt="Seris Logo" style="width:40px; height:40px;"/></div>
+                        <span class="text-text-primary text-xl font-bold">Seris</span>
+                    </a>
+                    <nav><a href="/buildyoursite" class="text-text-secondary font-medium hover:text-text-primary transition-colors">Back to Services</a></nav>
                 </div>
-                <div class="flex flex-1 justify-end gap-8">
-                    <div class="flex items-center gap-9">
-                        <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/SerisWebs">Home</a>
-                        <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/buildyoursite">Services</a>
-                        <a class="text-primary text-base font-medium leading-normal" href="/yourprojects">Your Projects</a>
-                        <a class="text-text-light hover:text-primary text-base font-medium leading-normal" href="/serisclients">Clients</a>
-                    </div>
-                    <div class="flex gap-4 items-center">
-                        <div id="login-button-container">
-                            <a href="/authentication" class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-5 bg-primary text-white text-base font-semibold leading-normal tracking-[-0.01em] hover:bg-primary/90 transition-colors">
-                                <span class="truncate">Login</span>
-                            </a>
-                        </div>
-                        <div id="user-profile-container" class="relative" style="display: none;" x-data="{ isOpen: false }" @keydown.escape.window="isOpen = false">
-                            <button @click="isOpen = !isOpen" class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-                                <div id="user-avatar-display" class="flex items-center justify-center size-full rounded-full"></div>
-                            </button>
-                            <div x-show="isOpen" @click.away="isOpen = false" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 mt-2 w-48 origin-top-right bg-card-dark rounded-md shadow-lg py-1 z-20 border border-border-dark">
-                               <a class="block px-4 py-2 text-sm text-text-light hover:bg-gray-700" href="/dashboard">Account</a>
-                                <a id="logout-button" class="block px-4 py-2 text-sm text-text-light hover:bg-gray-700 cursor-pointer">Logout</a>
+                <div class="flex items-center gap-4 text-text-primary">
+                    <span class="material-symbols-outlined text-accent">verified_user</span>
+                    <span class="font-semibold">100% Secure</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1 w-full mt-16 py-8">
+            <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <!-- LEFT FORM SIDE -->
+                    <div class="lg:col-span-2">
+                        <div id="accordion-container" class="space-y-4">
+                            
+                            <!-- Step 1: User Details -->
+                            <div class="bg-card-dark border border-border-dark shadow-lg rounded-lg" id="step1">
+                                <div class="header flex items-center p-4 bg-primary text-white rounded-t-lg cursor-pointer">
+                                    <span class="flex items-center justify-center size-6 rounded-full bg-white text-primary font-bold mr-4">1</span>
+                                    <h2 class="text-lg font-semibold">USER DETAILS</h2>
+                                    <span class="material-symbols-outlined ml-2">check_circle</span>
+                                </div>
+                                <div class="summary p-4 border-b border-border-dark">
+                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1">
+                                        <p class="text-text-primary font-medium" id="summary-name-display">-</p>
+                                        <p class="text-text-secondary" id="summary-email-display">-</p>
+                                        <p class="text-text-secondary" id="summary-mobile-display">-</p>
+                                    </div>
+                                    <button id="change-user-btn" class="text-primary font-semibold mt-3 hover:underline">Change</button>
+                                </div>
+                                <div class="content p-6 space-y-6 hidden">
+                                    <div class="space-y-4">
+                                        <div>
+                                            <label for="userName" class="block text-sm font-medium text-text-secondary mb-2">Full Name</label>
+                                            <input type="text" id="userName" name="userName" class="w-full px-4 py-3 bg-background-dark border border-border-dark text-text-primary rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        </div>
+                                        <div>
+                                            <label for="userEmail" class="block text-sm font-medium text-text-secondary mb-2">Email Address</label>
+                                            <input type="email" id="userEmail" name="userEmail" class="w-full px-4 py-3 bg-background-dark border border-border-dark text-text-primary rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        </div>
+                                        <div>
+                                            <label for="userMobileNo" class="block text-sm font-medium text-text-secondary mb-2">Mobile Number</label>
+                                            <input type="tel" id="userMobileNo" name="userMobileNo" class="w-full px-4 py-3 bg-background-dark border border-border-dark text-text-primary rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                        </div>
+                                    </div>
+                                    <button id="confirm-user-btn" class="bg-primary text-white font-semibold py-3 px-6 rounded-lg shadow-sm hover:bg-blue-600 transition-colors">CONFIRM AND CONTINUE</button>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
 
-            <!-- Mobile Header -->
-            <header class="md:hidden flex items-center justify-between p-4 border-b border-solid border-border-dark bg-background-dark/80 backdrop-blur-sm sticky top-0 z-10">
-                <div class="flex items-center gap-3">
-                    <img src="assets/images/seris.png" alt="Seris Logo" style="width:58px; height:48px; object-fit:contain;" />
-                    <h2 class="text-text-dark text-xl font-bold">Seris</h2>
-                </div>
-                <a class="text-text-light text-base font-medium" href="/serisclients">Clients</a>
-            </header>
-
-            <main class="flex-1 w-full">
-                <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
-                    <!-- ======================= -->
-                    <!--     LEFT FORM SIDE      -->
-                    <!-- ======================= -->
-                    <div class="flex flex-col justify-center items-center px-4 md:px-10 lg:px-12 py-16">
-                        <div class="w-full max-w-2xl">
-                            <div class="text-center mb-10">
-                                <h1 class="text-text-dark text-4xl md:text-5xl font-bold leading-tight tracking-tight mb-4">Submit Your Project</h1>
-                                <p class="text-text-light text-lg font-normal leading-normal max-w-2xl mx-auto">Tell us about your vision, and we'll transform it into a stunning digital reality.</p>
-                            </div>
-
-                            <!-- Form Card -->
-                            <div class="bg-card-dark rounded-xl border border-border-dark shadow-lg p-6 md:p-8 backdrop-blur-md">
-                                <form id="project-form" class="space-y-8">
-                                    <!-- Personal Information -->
-                                    <div>
-                                        <h3 class="text-xl font-bold text-text-dark mb-4">Personal Information</h3>
-                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                            <div>
-                                                <label for="name" class="block text-sm font-semibold text-text-light mb-2">Your Name *</label>
-                                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="John Doe">
-                                            </div>
-                                            <div>
-                                                <label for="companyName" class="block text-sm font-semibold text-text-light mb-2">Company Name</label>
-                                                <input type="text" id="companyName" name="companyName" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="Your Company Pvt Ltd">
-                                            </div>
-                                            <div>
-                                                <label for="email" class="block text-sm font-semibold text-text-light mb-2">Email Address *</label>
-                                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="john@company.com">
-                                            </div>
-                                            <div>
-                                                <label for="mobile" class="block text-sm font-semibold text-text-light mb-2">Mobile Number *</label>
-                                                <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="9876543210">
-                                                <p class="text-xs text-gray-400 mt-1">10 digits only</p>
+                            <!-- Step 2: Project Details -->
+                            <div class="bg-card-dark border border-border-dark shadow-lg rounded-lg" id="step2">
+                                <div class="header flex items-center p-4 bg-slate-900 text-text-secondary rounded-t-lg cursor-not-allowed">
+                                     <span class="flex items-center justify-center size-6 rounded-full bg-text-secondary text-card-dark font-bold mr-4">2</span>
+                                    <h2 class="text-lg font-semibold">PROJECT DETAILS</h2>
+                                </div>
+                                <div class="content p-6 space-y-8 hidden">
+                                    <div id="service-details-container" class="border-b border-border-dark pb-8">
+                                        <label class="block text-sm font-medium text-text-secondary mb-2">Selected Service</label>
+                                        <div id="service-loading" class="flex items-center space-x-3 p-4 border rounded-lg border-dashed border-border-dark"><div class="spinner"></div><p class="text-text-secondary">Fetching service details...</p></div>
+                                        <div id="service-prompt" class="hidden p-6 border rounded-lg border-dashed border-red-500/50 bg-red-500/10">
+                                            <p id="service-prompt-title" class="font-semibold text-red-400 mb-3 text-center"></p><p id="service-prompt-message" class="text-red-400/80 text-sm text-center mb-4"></p>
+                                            <div class="text-center"><a href="/buildyoursite" class="bg-primary text-white font-semibold py-2 px-5 rounded-lg shadow-sm hover:bg-blue-600 transition-colors">Go to Services Page</a></div>
+                                        </div>
+                                        <div id="service-info" class="hidden p-4 border rounded-lg bg-background-dark border-border-dark">
+                                            <div class="flex justify-between items-start">
+                                                <div><h3 id="service-name" class="font-bold text-lg text-text-primary"></h3><p id="service-description" class="text-text-secondary text-sm mt-1 max-w-lg"></p></div>
+                                                <div class="text-right flex-shrink-0 ml-4"><p id="service-price" class="text-xl font-bold text-accent"></p><a href="/buildyoursite" class="text-sm text-primary font-semibold mt-1 hover:underline">Change</a></div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <!-- Project Details -->
-                                    <div class="border-t border-border-dark pt-8">
-                                        <h3 class="text-xl font-bold text-text-dark mb-4">Project Details</h3>
-                                        <div class="space-y-6">
-                                            <div>
-                                                <label for="projectName" class="block text-sm font-semibold text-text-light mb-2">Project Name *</label>
-                                                <input type="text" id="projectName" name="projectName" required class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="e.g., E-commerce Platform for Fashion">
-                                            </div>
-                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                                <div id="website-type-wrapper">
-                                                    <label for="websiteType" class="block text-sm font-semibold text-text-light mb-2">Website Type *</label>
-                                                    <select id="websiteType" name="websiteType" required class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark">
-                                                        <option value="">Select website type</option>
-                                                        <option value="E-commerce">E-commerce</option>
-                                                        <option value="Portfolio">Portfolio</option>
-                                                        <option value="Corporate">Corporate Website</option>
-                                                        <option value="Blog">Blog/Magazine</option>
-                                                        <option value="Landing Page">Landing Page</option>
-                                                        <option value="Web Application">Web Application</option>
-                                                        <option value="Custom">Custom Solution</option>
-                                                    </select>
-                                                </div>
-                                                <div>
-                                                    <label for="budget" class="block text-sm font-semibold text-text-light mb-2">Budget (₹)</label>
-                                                    <select id="budget" name="budget" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark">
-                                                        <option value="">Select budget range</option>
-                                                        <option value="10000-25000">₹10,000 - ₹25,000</option>
-                                                        <option value="25000-50000">₹25,000 - ₹50,000</option>
-                                                        <option value="50000-100000">₹50,000 - ₹1,00,000</option>
-                                                        <option value="100000-200000">₹1,00,000 - ₹2,00,000</option>
-                                                        <option value="200000+">₹2,00,000+</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <label for="websiteLink" class="block text-sm font-semibold text-text-light mb-2">Existing Website Link</label>
-                                                <input type="url" id="websiteLink" name="websiteLink" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="https://example.com">
-                                                <p class="text-xs text-gray-400 mt-1">If you have an existing website you'd like us to redesign or reference</p>
-                                            </div>
+                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label for="projectName" class="block text-sm font-medium text-text-secondary mb-2">Project Name *</label>
+                                            <input type="text" id="projectName" name="projectName" required class="w-full px-4 py-3 bg-background-dark border border-border-dark text-text-primary rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="e.g., E-commerce Platform for Fashion">
+                                        </div>
+                                         <div>
+                                            <label for="companyName" class="block text-sm font-medium text-text-secondary mb-2">Company Name *</label>
+                                            <input type="text" id="companyName" name="companyName" required class="w-full px-4 py-3 bg-background-dark border border-border-dark text-text-primary rounded-lg focus:ring-2 focus:ring-primary focus:border-primary" placeholder="Your Company Pvt Ltd">
+                                        </div>
+                                        <div>
+                                            <label for="companyType" class="block text-sm font-medium text-text-secondary mb-2">Company Type *</label>
+                                            <select id="companyType" name="companyType" required class="w-full px-4 py-3 bg-background-dark border border-border-dark text-text-primary rounded-lg focus:ring-2 focus:ring-primary focus:border-primary">
+                                                <option value="">Select type</option><option value="Startup">Startup</option><option value="Small Business">Small Business</option><option value="Corporation">Corporation</option><option value="Non-Profit">Non-Profit</option><option value="Individual">Individual/Personal Project</option><option value="Other">Other</option>
+                                            </select>
                                         </div>
                                     </div>
+                                    <button id="continue-to-docs-btn" class="bg-primary text-white font-semibold py-3 px-6 rounded-lg shadow-sm hover:bg-blue-600 transition-colors">SAVE AND CONTINUE</button>
+                                </div>
+                            </div>
 
-                                    <!-- Project Documents -->
-                                    <div class="border-t border-border-dark pt-8">
-                                        <h3 class="text-xl font-bold text-text-dark mb-4">Project Documents</h3>
-                                        <p class="text-sm text-gray-400 mb-4">Add links to any reference materials, requirements documents, or design inspiration (Google Drive, Dropbox, etc.)</p>
-                                        <div id="documents-container" class="space-y-4">
-                                            <div class="document-item grid grid-cols-1 md:grid-cols-2 gap-4">
-                                                <div>
-                                                    <label class="block text-sm font-medium text-text-light mb-2">Document Name</label>
-                                                    <input type="text" name="docName[]" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="e.g., Design Mockups">
-                                                </div>
-                                                <div>
-                                                    <label class="block text-sm font-medium text-text-light mb-2">Document Link</label>
-                                                    <input type="url" name="docLink[]" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="https://drive.google.com/...">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="button" id="add-document-btn" class="mt-4 flex items-center gap-2 text-primary hover:text-primary/80 font-medium">
-                                            <span class="material-symbols-outlined text-xl">add_circle</span>
-                                            Add Another Document
+                            <!-- Step 3: Project Documents -->
+                            <div class="bg-card-dark border border-border-dark shadow-lg rounded-lg" id="step3">
+                                <div class="header flex items-center p-4 bg-slate-900 text-text-secondary rounded-t-lg cursor-not-allowed">
+                                    <span class="flex items-center justify-center size-6 rounded-full bg-text-secondary text-card-dark font-bold mr-4">3</span>
+                                    <h2 class="text-lg font-semibold">PROJECT DOCUMENTS</h2>
+                                </div>
+                                <div class="content p-6 space-y-6 hidden">
+                                    <p class="text-sm text-text-secondary mb-4">Add links to any reference materials (optional).</p>
+                                    <div id="documents-container" class="space-y-4">
+                                        <!-- Document items will be added here -->
+                                    </div>
+                                    <button type="button" id="add-document-btn" class="mt-4 flex items-center gap-2 text-primary hover:text-blue-500 font-semibold"><span class="material-symbols-outlined text-xl">add_circle</span>Add Another Document</button>
+                                    <div class="border-t border-border-dark pt-6">
+                                         <button type="submit" id="submit-button" class="w-full flex items-center justify-center h-12 px-8 bg-primary text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors disabled:bg-slate-700 disabled:cursor-not-allowed" disabled title="Please fill all required fields to submit.">
+                                            <span id="submit-text">SUBMIT PROJECT</span>
+                                            <div id="submit-spinner" class="spinner hidden"></div>
                                         </button>
                                     </div>
-
-                                    <!-- Submit Button -->
-                                    <div class="border-t border-border-dark pt-8">
-                                        <button type="submit" id="submit-button" class="w-full flex items-center justify-center h-12 px-8 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
-                                            <span id="submit-text">Submit Project</span>
-                                        </button>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ======================= -->
-                    <!-- RIGHT ANIMATION SIDE    -->
-                    <!-- ======================= -->
-                    <div class="hidden lg:flex justify-center items-center sticky top-0 h-screen">
-                         <div class="w-3/4 h-3/4 bg-card-dark rounded-xl border border-border-dark flex justify-center items-center backdrop-blur-md">
-                            <span class="text-text-light text-2xl">Animation Player Holder</span>
+                    <!-- RIGHT SUMMARY SIDE -->
+                    <div class="lg:col-span-1">
+                        <div class="sticky top-24 w-full">
+                             <div class="bg-card-dark border border-border-dark shadow-lg rounded-lg">
+                                <div class="p-4 border-b border-border-dark">
+                                    <h2 class="text-lg font-semibold text-text-secondary uppercase">Project Summary</h2>
+                                </div>
+                                <div class="p-4 space-y-4" id="summary-container">
+                                    <div class="flex justify-between items-center"><p class="text-text-secondary">Project Name</p><p class="text-text-primary font-medium text-right" id="summary-projectName">-</p></div>
+                                    <div class="flex justify-between items-center"><p class="text-text-secondary">Company Name</p><p class="text-text-primary font-medium text-right" id="summary-companyName">-</p></div>
+                                    <div class="flex justify-between items-center"><p class="text-text-secondary">Company Type</p><p class="text-text-primary font-medium text-right" id="summary-companyType">-</p></div>
+                                    <div class="border-b border-border-dark my-4"></div>
+                                    <p class="text-sm font-semibold text-text-secondary uppercase -mb-2">Selected Service</p>
+                                    <div class="flex justify-between items-center"><p class="text-text-secondary">Service Name</p><p class="text-text-primary font-medium text-right" id="summary-serviceName">-</p></div>
+                                    <div class="flex justify-between items-center"><p class="text-text-secondary">Service ID</p><p class="text-text-secondary font-mono text-xs text-right" id="summary-serviceId">-</p></div>
+                                    <div class="flex justify-between items-center text-lg font-bold"><p class="text-text-primary">Service Price</p><p class="text-accent" id="summary-servicePrice">-</p></div>
+                                </div>
+                                <div class="p-4 bg-green-500/10 rounded-b-lg border-t border-border-dark">
+                                     <div class="flex items-start text-green-400 font-semibold"><span class="material-symbols-outlined mr-2">local_offer</span><p>You'll receive a detailed quote after our expert review.</p></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
-            </main>
-        </div>
+            </div>
+        </main>
     </div>
 
-    <!-- ============================================= -->
-    <!--          MAIN SCRIPT                          -->
-    <!-- ============================================= -->
+    <!-- MAIN SCRIPT -->
     <script>
-        const API_BASE = "http://localhost:5000";
-
+        const API_BASE = "https://seris-backend.onrender.com";
+        const PROJECT_FORM_DATA_KEY = 'projectFormData';
+        
         document.addEventListener("DOMContentLoaded", () => {
-            handleUserAuthentication();
-            populateServiceType();
-            setupFormHandler();
-            setupDocumentHandler();
-        });
-
-        function handleUserAuthentication() {
-            const loginButtonContainer = document.getElementById("login-button-container");
-            const userProfileContainer = document.getElementById("user-profile-container");
-            const userAvatarDisplay = document.getElementById("user-avatar-display");
-            const logoutButton = document.getElementById("logout-button");
-            
-            const userToken = localStorage.getItem("token");
-            const userData = localStorage.getItem("user");
-
-            if (userToken && userData) {
-                try {
-                    const user = JSON.parse(userData);
-
-                    if (loginButtonContainer) loginButtonContainer.style.display = "none";
-                    if (userProfileContainer) userProfileContainer.style.display = "block";
-                    
-                    if (userAvatarDisplay && user.name) {
-                        const userInitial = user.name.charAt(0).toUpperCase();
-                        userAvatarDisplay.innerHTML = "";
-                        userAvatarDisplay.style.backgroundImage = "";
-                        userAvatarDisplay.classList.add('bg-primary', 'text-white', 'font-bold', 'text-xl');
-                        userAvatarDisplay.textContent = userInitial;
-                    }
-
-                    if (logoutButton) {
-                        logoutButton.addEventListener("click", (e) => {
-                            e.preventDefault();
-                            localStorage.removeItem("token");
-                            localStorage.removeItem("user");
-                            window.location.reload();
-                        });
-                    }
-                    
-                    autoFillUserData(user);
-
-                } catch (error) {
-                    console.error("Failed to parse user data:", error);
-                    localStorage.removeItem("token");
-                    localStorage.removeItem("user");
-                }
-            } else {
-                if (loginButtonContainer) loginButtonContainer.style.display = "flex";
-                if (userProfileContainer) userProfileContainer.style.display = "none";
+            const token = localStorage.getItem("token");
+            if (!token) {
+                window.location.href = '/authentication';
+                return; 
             }
-        }
+            
+            handleUserAuthentication();
+            setupAccordion();
+            setupSummaryUpdates();
+            setupDocumentHandler();
+            loadSavedProjectData();
+            setupFormSaving();
+            clearServiceSummary();
 
-        async function populateServiceType() {
+            const requiredFields = ['projectName', 'companyName', 'companyType'];
+            requiredFields.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const eventType = element.tagName === 'SELECT' ? 'change' : 'input';
+                    element.addEventListener(eventType, validateForm);
+                }
+            });
+
+            validateForm();
+
             const urlParams = new URLSearchParams(window.location.search);
             const serviceId = urlParams.get('serviceId');
 
-            if (!serviceId) return;
+            if (serviceId) {
+                loadServiceDetails(serviceId);
+            } else {
+                showServiceUIState('prompt', { title: 'No Service Selected!', message: 'You can fill out the form manually, or select a service to pre-fill the project name.' });
+            }
+        });
 
-            const wrapper = document.getElementById('website-type-wrapper');
-            if (!wrapper) return;
+        function validateForm() {
+            const submitButton = document.getElementById('submit-button');
+            const projectName = document.getElementById('projectName').value.trim();
+            const companyName = document.getElementById('companyName').value.trim();
+            const companyType = document.getElementById('companyType').value;
 
-            try {
-                const response = await fetch(`${API_BASE}/api/services`);
-                if (!response.ok) {
-                    throw new Error('Could not fetch the services list from the server.');
-                }
-                
-                const data = await response.json();
-                if (!data.success || !Array.isArray(data.services)) {
-                    throw new Error('Invalid data format received for services.');
-                }
-                
-                const selectedService = data.services.find(service => service._id === serviceId);
-
-                if (selectedService) {
-                    wrapper.innerHTML = `
-                        <label for="websiteType" class="block text-sm font-semibold text-text-light mb-2">Website Type *</label>
-                        <input type="hidden" id="websiteTypeId" name="websiteTypeId" value="${selectedService._id}" required />
-                        <input type="text" id="websiteType" name="websiteType" value="${selectedService.name}" readonly required class="w-full px-4 py-3 bg-gray-700 border border-border-dark rounded-lg cursor-not-allowed" />
-                    `;
-                    const companyName = document.getElementById('companyName').value || 'My Company';
-                    document.getElementById('projectName').value = `${selectedService.name} for ${companyName}`;
-                } else {
-                    throw new Error('The selected service could not be found.');
-                }
-            } catch (error) {
-                console.error('Error processing service:', error);
-                wrapper.innerHTML += `<p class="text-red-500 text-sm mt-1">${error.message}</p>`;
+            if (projectName && companyName && companyType) {
+                submitButton.disabled = false;
+                submitButton.title = "Ready to submit";
+            } else {
+                submitButton.disabled = true;
+                submitButton.title = "Please fill all required fields in Project Details to submit.";
             }
         }
 
-        function autoFillUserData(user) {
-            if (user.name) document.getElementById('name').value = user.name;
-            if (user.email) document.getElementById('email').value = user.email;
-            if (user.mobile) document.getElementById('mobile').value = user.mobile;
-            if (user.companyName) document.getElementById('companyName').value = user.companyName;
+        function handleUserAuthentication() {
+            const userData = localStorage.getItem("user");
+            try {
+                const user = JSON.parse(userData);
+                updateUserDisplays(user);
+            } catch (error) {
+                console.error("Failed to parse user data:", error);
+                localStorage.removeItem("token");
+                localStorage.removeItem("user");
+                window.location.href = '/authentication';
+            }
+        }
+        
+        function updateUserDisplays(user) {
+            document.getElementById('summary-name-display').textContent = user.name || 'N/A';
+            document.getElementById('summary-email-display').textContent = user.email || 'N/A';
+            document.getElementById('summary-mobile-display').textContent = user.mobileNo ? `Mobile: ${user.mobileNo}` : 'Mobile: Not Provided';
+            document.getElementById('userName').value = user.name || '';
+            document.getElementById('userEmail').value = user.email || '';
+            document.getElementById('userMobileNo').value = user.mobileNo || '';
         }
 
+        function clearServiceSummary() {
+            document.getElementById('summary-serviceName').textContent = '-';
+            document.getElementById('summary-serviceId').textContent = '-';
+            document.getElementById('summary-servicePrice').textContent = '-';
+        }
+
+        async function loadServiceDetails(serviceId) {
+            showServiceUIState('loading');
+            clearServiceSummary();
+            try {
+                const response = await fetch(`${API_BASE}/api/services/${serviceId}`);
+                if (!response.ok) throw new Error(`Service with ID '${serviceId}' was not found.`);
+                
+                const data = await response.json();
+                if (data.success && data.service) {
+                    populateFormWithServiceData(data.service);
+                    showServiceUIState('info');
+                } else {
+                    throw new Error(data.message || 'API response error.');
+                }
+            } catch (error) {
+                console.error('Failed to load service details:', error);
+                showServiceUIState('prompt', { title: 'Failed to Load Service', message: `Details: ${error.message}` });
+            }
+        }
+
+        function populateFormWithServiceData(service) {
+            document.getElementById('service-name').textContent = service.name;
+            document.getElementById('service-description').textContent = service.description;
+            document.getElementById('service-price').textContent = `₹${new Intl.NumberFormat('en-IN').format(service.price)}`;
+            
+            const projectNameInput = document.getElementById('projectName');
+            projectNameInput.value = service.name;
+            projectNameInput.dispatchEvent(new Event('input', { bubbles: true }));
+
+            document.getElementById('summary-serviceName').textContent = service.name;
+            document.getElementById('summary-serviceId').textContent = service._id;
+            document.getElementById('summary-servicePrice').textContent = `₹${new Intl.NumberFormat('en-IN').format(service.price)}`;
+            
+            saveProjectData();
+        }
+
+        function setupSummaryUpdates() {
+            const summaryFields = { 
+                'projectName': 'summary-projectName', 
+                'companyName': 'summary-companyName',
+                'companyType': 'summary-companyType',
+            };
+            Object.keys(summaryFields).forEach(inputId => {
+                const inputElement = document.getElementById(inputId);
+                const summaryElement = document.getElementById(summaryFields[inputId]);
+                if (inputElement && summaryElement) {
+                    const eventType = inputElement.tagName.toLowerCase() === 'select' ? 'change' : 'input';
+                    inputElement.addEventListener(eventType, () => {
+                         if (inputElement.tagName.toLowerCase() === 'select') {
+                            summaryElement.textContent = inputElement.options[inputElement.selectedIndex].text || '-';
+                        } else {
+                            summaryElement.textContent = inputElement.value || '-';
+                        }
+                    });
+                }
+            });
+        }
+        
+        function saveProjectData() {
+            const formData = {
+                projectName: document.getElementById('projectName').value,
+                companyName: document.getElementById('companyName').value,
+                companyType: document.getElementById('companyType').value,
+            };
+            localStorage.setItem(PROJECT_FORM_DATA_KEY, JSON.stringify(formData));
+        }
+
+        function loadSavedProjectData() {
+            const savedData = localStorage.getItem(PROJECT_FORM_DATA_KEY);
+            if (savedData) {
+                const formData = JSON.parse(savedData);
+                const fieldsToLoad = ['projectName', 'companyName', 'companyType'];
+                fieldsToLoad.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element && formData[id]) {
+                        element.value = formData[id];
+                        element.dispatchEvent(new Event(element.tagName === 'SELECT' ? 'change' : 'input', { bubbles: true }));
+                    }
+                });
+            }
+        }
+        
+        function setupFormSaving() {
+            const fieldsToSave = ['projectName', 'companyName', 'companyType'];
+            fieldsToSave.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    const eventType = element.tagName === 'SELECT' ? 'change' : 'input';
+                    element.addEventListener(eventType, saveProjectData);
+                }
+            });
+        }
+        
+        function showServiceUIState(state, data = {}) {
+            document.getElementById('service-loading').style.display = 'none';
+            document.getElementById('service-prompt').style.display = 'none';
+            document.getElementById('service-info').style.display = 'none';
+            if (state === 'loading') { document.getElementById('service-loading').style.display = 'flex'; }
+            else if (state === 'prompt') {
+                document.getElementById('service-prompt-title').textContent = data.title || 'An Error Occurred';
+                document.getElementById('service-prompt-message').textContent = data.message || 'We could not load the service details.';
+                document.getElementById('service-prompt').style.display = 'block';
+            } else if (state === 'info') { document.getElementById('service-info').style.display = 'block'; }
+        }
+
+        let setActiveStep, setCompletedStep;
+        function setupAccordion() {
+            const steps = {
+                step1: { header: document.querySelector('#step1 .header'), content: document.querySelector('#step1 .content'), summary: document.querySelector('#step1 .summary'),},
+                step2: { header: document.querySelector('#step2 .header'), content: document.querySelector('#step2 .content'), },
+                step3: { header: document.querySelector('#step3 .header'), content: document.querySelector('#step3 .content'), },
+            };
+            const changeUserBtn = document.getElementById('change-user-btn');
+            const confirmUserBtn = document.getElementById('confirm-user-btn');
+            const continueToDocsBtn = document.getElementById('continue-to-docs-btn');
+            
+            setActiveStep = (stepId) => {
+                Object.keys(steps).forEach(id => {
+                    const step = steps[id];
+                    const isActive = id === stepId;
+                    step.header.classList.toggle('bg-primary', isActive);
+                    step.header.classList.toggle('text-white', isActive);
+                    step.header.classList.toggle('bg-slate-900', !isActive && !step.completed);
+                    step.header.classList.toggle('text-text-secondary', !isActive && !step.completed);
+                    if (step.content) step.content.classList.toggle('hidden', !isActive);
+                    if (step.summary) step.summary.classList.toggle('hidden', isActive);
+                });
+            };
+            setCompletedStep = (stepId) => {
+                const step = steps[stepId];
+                step.completed = true;
+                step.header.classList.remove('bg-primary');
+                step.header.classList.add('bg-card-dark', 'text-text-primary');
+                if (step.summary) step.summary.classList.remove('hidden');
+                if (step.content) step.content.classList.add('hidden');
+            };
+            
+            steps.step1.completed = true; setActiveStep('step2');
+            
+            changeUserBtn.addEventListener('click', () => setActiveStep('step1'));
+            confirmUserBtn.addEventListener('click', () => { 
+                const user = JSON.parse(localStorage.getItem("user")) || {};
+                user.name = document.getElementById('userName').value;
+                user.email = document.getElementById('userEmail').value;
+                user.mobileNo = document.getElementById('userMobileNo').value;
+                localStorage.setItem("user", JSON.stringify(user));
+                updateUserDisplays(user);
+                setCompletedStep('step1'); 
+                setActiveStep('step2'); 
+            });
+            continueToDocsBtn.addEventListener('click', () => { setCompletedStep('step2'); setActiveStep('step3'); });
+        }
+        
         function setupDocumentHandler() {
             const addBtn = document.getElementById('add-document-btn');
             const container = document.getElementById('documents-container');
-
             addBtn.addEventListener('click', () => {
                 const newDocItem = document.createElement('div');
-                newDocItem.className = 'document-item grid grid-cols-1 md:grid-cols-2 gap-4';
-                newDocItem.innerHTML = `
-                    <div>
-                        <label class="block text-sm font-medium text-text-light mb-2">Document Name</label>
-                        <input type="text" name="docName[]" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="e.g., Design Mockups">
-                    </div>
-                    <div class="flex gap-2">
-                        <div class="flex-1">
-                            <label class="block text-sm font-medium text-text-light mb-2">Document Link</label>
-                            <input type="url" name="docLink[]" class="w-full px-4 py-3 bg-gray-900 border border-border-dark rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-dark" placeholder="https://drive.google.com/...">
-                        </div>
-                        <div class="flex items-end">
-                            <button type="button" class="remove-doc-btn h-12 px-3 text-red-500 hover:text-red-700 transition-colors">
-                                <span class="material-symbols-outlined">delete</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
+                newDocItem.className = 'document-item';
+                newDocItem.innerHTML = `<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4"><div><label class="block text-sm font-medium text-text-secondary mb-2">Document Name</label><input type="text" name="docName[]" class="w-full px-4 py-3 bg-background-dark border border-border-dark text-text-primary rounded-lg" placeholder="e.g., Design Mockups"></div><div><label class="block text-sm font-medium text-text-secondary mb-2">Document Link</label><div class="flex gap-2"><div class="flex-1"><input type="url" name="docLink[]" class="w-full px-4 py-3 bg-background-dark border border-border-dark text-text-primary rounded-lg" placeholder="https://drive.google.com/..."></div><button type="button" class="remove-doc-btn px-3 text-red-500 hover:text-red-400 self-end mb-1"><span class="material-symbols-outlined">delete</span></button></div></div></div>`;
                 container.appendChild(newDocItem);
                 newDocItem.querySelector('.remove-doc-btn').addEventListener('click', () => newDocItem.remove());
             });
         }
+        document.getElementById('submit-button').addEventListener('click', async (e) => {
+    e.preventDefault();
 
-        function setupFormHandler() {
-            const form = document.getElementById('project-form');
-            form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                const submitButton = document.getElementById('submit-button');
-                const token = localStorage.getItem('token');
-                
-                if (!token) {
-                    alert('Please login to submit a project.');
-                    window.location.href = '/authentication';
-                    return;
-                }
+    const submitButton = document.getElementById('submit-button');
+    const submitText = document.getElementById('submit-text');
+    const submitSpinner = document.getElementById('submit-spinner');
 
-                submitButton.disabled = true;
-                document.getElementById('submit-text').textContent = 'Submitting...';
-                
-                const docNames = document.getElementsByName('docName[]');
-                const docLinks = document.getElementsByName('docLink[]');
-                const projectDocuments = [];
-                
-                for (let i = 0; i < docNames.length; i++) {
-                    const name = docNames[i].value.trim();
-                    const link = docLinks[i].value.trim();
-                    if (name && link) {
-                        projectDocuments.push({ name, driveLink: link });
-                    }
-                }
+    submitButton.disabled = true;
+    submitText.textContent = 'SUBMITTING...';
+    submitSpinner.classList.remove('hidden');
 
-                const websiteTypeId = document.getElementById('websiteTypeId');
-                const websiteTypeSelect = document.getElementById('websiteType');
-                
-                const formData = {
-                    name: document.getElementById('name').value,
-                    companyName: document.getElementById('companyName').value || undefined,
-                    email: document.getElementById('email').value,
-                    mobile: document.getElementById('mobile').value,
-                    projectName: document.getElementById('projectName').value,
-                    websiteType: websiteTypeId ? websiteTypeId.value : websiteTypeSelect.value,
-                    budget: document.getElementById('budget').value || undefined,
-                    websiteLink: document.getElementById('websiteLink').value || undefined,
-                    projectDocuments: projectDocuments.length > 0 ? projectDocuments : undefined
-                };
-                
-                try {
-                    const response = await fetch(`${API_BASE}/api/projects`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-                        body: JSON.stringify(formData)
-                    });
-                    
-                    const data = await response.json();
-                    if (!response.ok || !data.success) {
-                        throw new Error(data.message || 'Failed to submit the project.');
-                    }
-                    
-                    alert('Project submitted successfully!');
-                    form.reset();
-                    window.location.href = '/yourprojects';
-                    
-                } catch (error) {
-                    alert(`Submission Failed: ${error.message}`);
-                } finally {
-                    submitButton.disabled = false;
-                    document.getElementById('submit-text').textContent = 'Submit Project';
-                }
-            });
+    try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const token = localStorage.getItem("token");
+        const urlParams = new URLSearchParams(window.location.search);
+
+        // Prepare documents array
+        const documents = Array.from(document.querySelectorAll('.document-item')).map(item => {
+            const name = item.querySelector('input[name="docName[]"]').value.trim();
+            const link = item.querySelector('input[name="docLink[]"]').value.trim();
+            return name && link ? { name, link } : null;
+        }).filter(Boolean);
+
+        // Get service info
+        const serviceId = urlParams.get('serviceId') || null;
+        const serviceName = document.getElementById('summary-serviceName')?.textContent || '';
+        let servicePrice = document.getElementById('summary-servicePrice')?.textContent || '';
+        // Convert to number
+        servicePrice = Number(servicePrice.replace(/[^\d.-]/g, ''));
+
+        // Prepare project data
+        const projectData = {
+            name: user.name,
+            email: user.email,
+            mobile: user.mobileNo,
+            companyName: document.getElementById('companyName').value.trim(),
+            projectName: document.getElementById('projectName').value.trim(),
+            projectDocuments: documents,
+            serviceId,
+            serviceName,
+            servicePrice
+        };
+
+        // Validate required fields
+        if (!projectData.name || !projectData.email || !projectData.mobile || !projectData.projectName) {
+            throw new Error("Please ensure all required fields are filled out.");
         }
+
+        const response = await fetch(`${API_BASE}/api/projects`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(projectData)
+        });
+
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.message || `Server responded with status: ${response.status}`);
+
+        localStorage.removeItem(PROJECT_FORM_DATA_KEY);
+        alert("Project submitted successfully!");
+        window.location.href = '/yourprojects';
+
+    } catch (error) {
+        console.error("Submission failed:", error);
+        alert(`Submission Failed:\n\n${error.message}`);
+    } finally {
+        submitButton.disabled = false;
+        submitText.textContent = 'SUBMIT PROJECT';
+        submitSpinner.classList.add('hidden');
+    }
+});
+
     </script>
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>
